@@ -31,12 +31,16 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.106",
+    "IDEVersion": "2023.8.1.102",
   },
   "resources": [
+    {"id":{"name":"spr_mouse","path":"sprites/spr_mouse/spr_mouse.yy",},},
+    {"id":{"name":"obj_wheel2","path":"objects/obj_wheel2/obj_wheel2.yy",},},
     {"id":{"name":"obj_snakeSkin","path":"objects/obj_snakeSkin/obj_snakeSkin.yy",},},
     {"id":{"name":"spr_circle","path":"sprites/spr_circle/spr_circle.yy",},},
+    {"id":{"name":"obj_mouse","path":"objects/obj_mouse/obj_mouse.yy",},},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
+    {"id":{"name":"sprite_snakeEye","path":"sprites/sprite_snakeEye/sprite_snakeEye.yy",},},
     {"id":{"name":"obj_snake","path":"objects/obj_snake/obj_snake.yy",},},
     {"id":{"name":"spr_snakeBody","path":"sprites/spr_snakeBody/spr_snakeBody.yy",},},
     {"id":{"name":"obj_circle","path":"objects/obj_circle/obj_circle.yy",},},
@@ -47,6 +51,7 @@
     {"id":{"name":"spr_snakeHead","path":"sprites/spr_snakeHead/spr_snakeHead.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"obj_staticParent","path":"objects/obj_staticParent/obj_staticParent.yy",},},
+    {"id":{"name":"obj_wheel","path":"objects/obj_wheel/obj_wheel.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [

@@ -23,3 +23,14 @@ var ad=angle_difference(-dir,phy_rotation);
 phy_rotation=lerp(phy_rotation,phy_rotation+ad,0.05);
 //}else{
 //	physics_apply_impulse(x, y,y-phy_linear_velocity_x,y-phy_linear_velocity_y);
+
+var sn=id;
+
+with(obj_mouse){
+	//if(position_meeting(x,y,sn)){
+	//	instance_destroy(id);	
+	//}
+	if(distance_to_object(obj_snake)<=5){
+		instance_destroy(id);
+	}
+}
