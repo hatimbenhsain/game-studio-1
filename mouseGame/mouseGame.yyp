@@ -31,7 +31,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.1.102",
+    "IDEVersion": "2023.8.2.106",
   },
   "resources": [
     {"id":{"name":"spr_mouse","path":"sprites/spr_mouse/spr_mouse.yy",},},
@@ -41,7 +41,9 @@
     {"id":{"name":"obj_mouse","path":"objects/obj_mouse/obj_mouse.yy",},},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
     {"id":{"name":"sprite_snakeEye","path":"sprites/sprite_snakeEye/sprite_snakeEye.yy",},},
+    {"id":{"name":"sprite_snakeFace","path":"sprites/sprite_snakeFace/sprite_snakeFace.yy",},},
     {"id":{"name":"obj_snake","path":"objects/obj_snake/obj_snake.yy",},},
+    {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
     {"id":{"name":"spr_snakeBody","path":"sprites/spr_snakeBody/spr_snakeBody.yy",},},
     {"id":{"name":"obj_circle","path":"objects/obj_circle/obj_circle.yy",},},
     {"id":{"name":"obj_snakeBody","path":"objects/obj_snakeBody/obj_snakeBody.yy",},},

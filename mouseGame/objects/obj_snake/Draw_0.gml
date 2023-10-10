@@ -4,9 +4,14 @@ draw_set_color(c_white);
 
 var points=[];
 
-var a=skins[0].ang2-degtorad(skins[0].image_angle);
-var xx=skins[0].x+cos(a)*skins[0].d2;
-var yy=skins[0].y+sin(a)*skins[0].d2;
+var f=1;
+if((eating && image_index%2<=1) || mouse_check_button(mb_left)){
+	f=1.8;
+}
+
+var a=skins[0].ang2*f-degtorad(skins[0].image_angle);
+var xx=skins[0].x+cos(a)*skins[0].d2*f;
+var yy=skins[0].y+sin(a)*skins[0].d2*f;
 array_push(points,{x:xx,y:yy});
 for(var i=0;i<array_length(skins);i++){
 	var a=skins[i].ang-degtorad(skins[i].image_angle);
@@ -14,9 +19,9 @@ for(var i=0;i<array_length(skins);i++){
 	var yy=skins[i].y+sin(a)*skins[i].d;
 	array_push(points,{x:xx,y:yy});
 }
-var a=skins[array_length(skins)-1].ang2-degtorad(skins[array_length(skins)-1].image_angle);
-var xx=skins[array_length(skins)-1].x+cos(a)*skins[array_length(skins)-1].d2;
-var yy=skins[array_length(skins)-1].y+sin(a)*skins[array_length(skins)-1].d2;
+var a=skins[array_length(skins)-1].ang2*f-degtorad(skins[array_length(skins)-1].image_angle);
+var xx=skins[array_length(skins)-1].x+cos(a)*skins[array_length(skins)-1].d2*f;
+var yy=skins[array_length(skins)-1].y+sin(a)*skins[array_length(skins)-1].d2*f;
 array_push(points,{x:xx,y:yy});
 xx=x;
 yy=y;

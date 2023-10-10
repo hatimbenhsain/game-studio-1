@@ -11,3 +11,6 @@ physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind_ext(fix,id,0,0);
 physics_fixture_delete(fix);
 
+eatenCounter=0;
+eatenMaxTime=1;
+beingEaten=false;

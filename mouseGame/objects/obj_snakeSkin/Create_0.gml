@@ -32,9 +32,10 @@ physics_fixture_bind(fix,id);
 physics_fixture_delete(fix);
 
 ang=arctan2(disY,disX);
-show_debug_message(ang);
 d=distance_to_point(disX+x,disY+y);
-show_debug_message(d);
+
 
 ang2=arctan2(disY2,disX2);
 d2=distance_to_point(disX2+x,disY2+y);
+show_debug_message(ang2);
+ang2=ang2

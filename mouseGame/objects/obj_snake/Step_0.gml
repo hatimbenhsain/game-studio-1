@@ -27,10 +27,15 @@ phy_rotation=lerp(phy_rotation,phy_rotation+ad,0.05);
 var sn=id;
 
 with(obj_mouse){
-	//if(position_meeting(x,y,sn)){
-	//	instance_destroy(id);	
-	//}
-	if(distance_to_object(obj_snake)<=5){
-		instance_destroy(id);
+	beingEaten=false;	
+}
+eating=false;
+
+var inst=instance_place(x,y,obj_mouse)
+if(inst!=noone){
+	with(inst){
+		beingEaten=true;
+		eatenCounter+=delta_time/1000000;
+		obj_snake.eating=true;
 	}
 }

@@ -4,6 +4,8 @@ bHeight=16;	//body height
 bLength=20;	//body length
 sWidth=10;	//skin width
 
+eating=false;
+
 hWidth=7; //head width
 
 var fix=physics_fixture_create();

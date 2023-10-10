@@ -23,6 +23,7 @@
     {"name":"spr_circle","order":1,"path":"sprites/spr_circle/spr_circle.yy",},
     {"name":"obj_mouse","order":10,"path":"objects/obj_mouse/obj_mouse.yy",},
     {"name":"sprite_snakeEye","order":5,"path":"sprites/sprite_snakeEye/sprite_snakeEye.yy",},
+    {"name":"sprite_snakeFace","order":7,"path":"sprites/sprite_snakeFace/sprite_snakeFace.yy",},
     {"name":"spr_snakeBody","order":3,"path":"sprites/spr_snakeBody/spr_snakeBody.yy",},
     {"name":"obj_circle","order":4,"path":"objects/obj_circle/obj_circle.yy",},
     {"name":"obj_snakeBody","order":6,"path":"objects/obj_snakeBody/obj_snakeBody.yy",},
