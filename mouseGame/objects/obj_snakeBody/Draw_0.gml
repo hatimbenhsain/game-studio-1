@@ -1,2 +1,2 @@
 draw_set_color(c_white);
-physics_draw_debug();
+//physics_draw_debug();

@@ -21,6 +21,9 @@ var difX=5;
 
 currentLength=0
 
+skinsA=[];
+skinsB=[];
+
 function addBody(instA,diff){	
 	var b=instance_create_layer(instA.x-bHeight-diff,instA.y,instA.layer,obj_snakeBody);
 	b.snakeParent=instA;
@@ -37,10 +40,15 @@ function addSkin(instA,w){
 	var maxMotorForce=200;
 	var motorSpeed=2;
 	physics_joint_prismatic_create(instA,s,instA.x,instA.y,0,10,-w,0,true,maxMotorForce,motorSpeed,true,false);
+	array_push(skinsA,s);
 	s=instance_create_layer(instA.x,instA.y,instA.layer,obj_snakeSkin,{top:true});
 	s.snakeParent=instA;
 	physics_joint_prismatic_create(instA,s,instA.x,instA.y,0,-10,0,w,true,maxMotorForce,motorSpeed,true,false);
+	array_push(skinsB,s);
 }
+
+
+
 
 var b=id;
 
@@ -53,4 +61,5 @@ for(i=0;i<bLength;i++){
 	currentLength+=1
 }
 
+skins=array_concat(skinsA,array_reverse(skinsB));
 

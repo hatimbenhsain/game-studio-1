@@ -32,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_snakeBody",
-    "path": "sprites/spr_snakeBody/spr_snakeBody.yy",
+    "name": "spr_circle2",
+    "path": "sprites/spr_circle2/spr_circle2.yy",
   },
   "spriteMaskId": null,
   "visible": true,

@@ -37,7 +37,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_snakeHead",
+    "path": "sprites/spr_snakeHead/spr_snakeHead.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

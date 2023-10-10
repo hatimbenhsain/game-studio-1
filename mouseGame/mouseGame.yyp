@@ -31,7 +31,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.1.102",
+    "IDEVersion": "2023.8.2.106",
   },
   "resources": [
     {"id":{"name":"obj_snakeSkin","path":"objects/obj_snakeSkin/obj_snakeSkin.yy",},},
@@ -42,6 +42,7 @@
     {"id":{"name":"obj_circle","path":"objects/obj_circle/obj_circle.yy",},},
     {"id":{"name":"obj_snakeBody","path":"objects/obj_snakeBody/obj_snakeBody.yy",},},
     {"id":{"name":"obj_dynamicParent","path":"objects/obj_dynamicParent/obj_dynamicParent.yy",},},
+    {"id":{"name":"spr_circle2","path":"sprites/spr_circle2/spr_circle2.yy",},},
     {"id":{"name":"obj_gm","path":"objects/obj_gm/obj_gm.yy",},},
     {"id":{"name":"spr_snakeHead","path":"sprites/spr_snakeHead/spr_snakeHead.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},

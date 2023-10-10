@@ -23,6 +23,7 @@
     {"name":"obj_circle","order":4,"path":"objects/obj_circle/obj_circle.yy",},
     {"name":"obj_snakeBody","order":6,"path":"objects/obj_snakeBody/obj_snakeBody.yy",},
     {"name":"obj_dynamicParent","order":2,"path":"objects/obj_dynamicParent/obj_dynamicParent.yy",},
+    {"name":"spr_circle2","order":4,"path":"sprites/spr_circle2/spr_circle2.yy",},
     {"name":"obj_gm","order":5,"path":"objects/obj_gm/obj_gm.yy",},
     {"name":"spr_snakeHead","order":2,"path":"sprites/spr_snakeHead/spr_snakeHead.yy",},
     {"name":"obj_wall","order":3,"path":"objects/obj_wall/obj_wall.yy",},

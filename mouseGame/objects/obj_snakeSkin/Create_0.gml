@@ -1,5 +1,5 @@
 var fix=physics_fixture_create();
-var w=obj_snake.sWidth;
+w=obj_snake.sWidth;
 if(obj_snake.currentLength==0){
 	w=obj_snake.hWidth;	
 }
@@ -9,10 +9,14 @@ if(top){
 	physics_fixture_add_point(fix,-obj_snake.bHeight/2,w/2);
 	physics_fixture_add_point(fix,-obj_snake.bHeight/2,-w/2);
 	physics_fixture_add_point(fix,obj_snake.bHeight/2,w/2);
+	disY=-w/2;
+	disX=-obj_snake.bHeight/2;
 }else{
 	physics_fixture_add_point(fix,-obj_snake.bHeight/2,-w/2);
 	physics_fixture_add_point(fix,obj_snake.bHeight/2,-w/2);
 	physics_fixture_add_point(fix,-obj_snake.bHeight/2,w/2);
+	disY=w/2;
+	disX=-obj_snake.bHeight/2;
 }
 physics_fixture_set_density(fix,0.8);
 physics_fixture_set_restitution(fix,0.1);
@@ -23,3 +27,7 @@ physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind(fix,id);
 physics_fixture_delete(fix);
 
+ang=arctan2(disY,disX);
+show_debug_message(ang);
+d=distance_to_point(disX+x,disY+y);
+show_debug_message(d);
