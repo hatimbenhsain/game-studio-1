@@ -1,8 +1,10 @@
 moveSpeed=15;
 bWidth=10;	//body width
 bHeight=16;	//body height
-bLength=20;	//body length
+bLength=17;	//body length
 sWidth=10;	//skin width
+ateCounter=-1;
+bellySpeed=0.1;
 
 eating=false;
 
@@ -19,18 +21,24 @@ physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind(fix,id);
 physics_fixture_delete(fix);
 
-var difX=5;
+difX=5;
 
 currentLength=0
 
 skinsA=[];
 skinsB=[];
 
+bodies=[];
+
 function addBody(instA,diff){	
-	var b=instance_create_layer(instA.x-bHeight-diff,instA.y,instA.layer,obj_snakeBody);
+	var a=degtorad(instA.phy_rotation);
+	var b=instance_create_layer(instA.x-(bHeight+diff)*cos(a),instA.y-(bHeight+diff)*sin(a),instA.layer,obj_snakeBody);
 	b.snakeParent=instA;
-	physics_joint_revolute_create(instA,b,instA.x-bHeight/2-diff/2,instA.y,0,0,false,100,50,false,true);
+	b.phy_rotation=instA.phy_rotation;
+	physics_joint_revolute_create(instA,b,instA.x-(bHeight+diff)*cos(a)/2,instA.y-(bHeight+diff)*sin(a)/2,0,0,false,100,50,false,true);
+	b.phy_rotation=0;
 	addSkin(b,bWidth);
+	array_push(bodies,b);
 	return b;
 }
 

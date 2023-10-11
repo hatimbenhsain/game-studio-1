@@ -34,6 +34,11 @@ physics_fixture_delete(fix);
 ang=arctan2(disY,disX);
 d=distance_to_point(disX+x,disY+y);
 
+fakeAng=arctan2(disY*3,disX);
+fakeD=distance_to_point(disX+x,disY*3+y);
+
+fakeAng2=arctan2(disY*2.5,disX);
+fakeD2=distance_to_point(disX+x,disY*2.5+y);
 
 ang2=arctan2(disY2,disX2);
 d2=distance_to_point(disX2+x,disY2+y);

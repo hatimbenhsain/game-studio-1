@@ -40,6 +40,7 @@
     {"id":{"name":"spr_circle","path":"sprites/spr_circle/spr_circle.yy",},},
     {"id":{"name":"obj_mouse","path":"objects/obj_mouse/obj_mouse.yy",},},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
+    {"id":{"name":"path_circle","path":"paths/path_circle/path_circle.yy",},},
     {"id":{"name":"sprite_snakeEye","path":"sprites/sprite_snakeEye/sprite_snakeEye.yy",},},
     {"id":{"name":"sprite_snakeFace","path":"sprites/sprite_snakeFace/sprite_snakeFace.yy",},},
     {"id":{"name":"obj_snake","path":"objects/obj_snake/obj_snake.yy",},},

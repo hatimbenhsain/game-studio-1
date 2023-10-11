@@ -39,3 +39,13 @@ if(inst!=noone){
 		obj_snake.eating=true;
 	}
 }
+
+if(ateCounter>-1){
+	ateCounter+=delta_time/1000000
+	if(ateCounter>=bellySpeed*bLength){
+		ateCounter=-1;	
+		var b=addBody(bodies[array_length(bodies)-1],difX);	
+		currentLength+=1
+		skins=array_concat(skinsA,array_reverse(skinsB));
+	}
+}

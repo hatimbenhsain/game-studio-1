@@ -14,10 +14,27 @@ var xx=skins[0].x+cos(a)*skins[0].d2*f;
 var yy=skins[0].y+sin(a)*skins[0].d2*f;
 array_push(points,{x:xx,y:yy});
 for(var i=0;i<array_length(skins);i++){
-	var a=skins[i].ang-degtorad(skins[i].image_angle);
-	var xx=skins[i].x+cos(a)*skins[i].d;
-	var yy=skins[i].y+sin(a)*skins[i].d;
+	var aa=skins[i].ang;
+	var d=skins[i].d;
+	if(ateCounter>=0 && (floor(ateCounter/bellySpeed)==i || floor(ateCounter/bellySpeed)==array_length(skins)-i-1)){
+		aa=skins[i].fakeAng;	
+		var d=skins[i].fakeD;
+	}else if(ateCounter>=0 && (floor(ateCounter/bellySpeed)==i-1 || floor(ateCounter/bellySpeed)==i+1 || 
+	floor(ateCounter/bellySpeed)==array_length(skins)-i-2 || floor(ateCounter/bellySpeed)==array_length(skins)-i)){
+		aa=skins[i].fakeAng2;	
+		var d=skins[i].fakeD2;
+	}
+	var a=aa-degtorad(skins[i].image_angle);
+	var xx=skins[i].x+cos(a)*d;
+	var yy=skins[i].y+sin(a)*d;
 	array_push(points,{x:xx,y:yy});
+	//if(i==array_length(skins)/2-1){
+	//	var b=skins[i].snakeParent;
+	//	a=pi-degtorad(b.image_angle)
+	//	xx=b.x+10*cos(a);
+	//	yy=b.y+10*sin(a);
+	//	array_push(points,{x:xx,y:yy});
+	//}
 }
 var a=skins[array_length(skins)-1].ang2*f-degtorad(skins[array_length(skins)-1].image_angle);
 var xx=skins[array_length(skins)-1].x+cos(a)*skins[array_length(skins)-1].d2*f;
