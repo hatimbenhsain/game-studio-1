@@ -59,4 +59,4 @@ physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind_ext(fix,id,radius*2,0);
 physics_fixture_delete(fix);
 
-physics_joint_revolute_create(id,obj_wall,x,y,0,0,false,0,0,false,false);
+joint=physics_joint_revolute_create(obj_wall,id,x,y,0,0,false,0,0,false,false);

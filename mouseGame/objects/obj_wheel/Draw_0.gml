@@ -1,4 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-physics_draw_debug();
+//physics_draw_debug();
+draw_self();
 

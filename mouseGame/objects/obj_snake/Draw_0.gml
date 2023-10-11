@@ -5,7 +5,7 @@ draw_set_color(c_white);
 var points=[];
 
 var f=1;
-if((eating && image_index%2<=1) || mouse_check_button(mb_left)){
+if((eating && image_index%2<=1)){
 	f=1.8;
 }
 
@@ -28,13 +28,13 @@ for(var i=0;i<array_length(skins);i++){
 	var xx=skins[i].x+cos(a)*d;
 	var yy=skins[i].y+sin(a)*d;
 	array_push(points,{x:xx,y:yy});
-	//if(i==array_length(skins)/2-1){
-	//	var b=skins[i].snakeParent;
-	//	a=pi-degtorad(b.image_angle)
-	//	xx=b.x+10*cos(a);
-	//	yy=b.y+10*sin(a);
-	//	array_push(points,{x:xx,y:yy});
-	//}
+	if(i==array_length(skins)/2-1){
+		var b=skins[i].snakeParent;
+		a=pi-degtorad(b.image_angle)
+		xx=b.x+15*cos(a);
+		yy=b.y+15*sin(a);
+		array_push(points,{x:xx,y:yy});
+	}
 }
 var a=skins[array_length(skins)-1].ang2*f-degtorad(skins[array_length(skins)-1].image_angle);
 var xx=skins[array_length(skins)-1].x+cos(a)*skins[array_length(skins)-1].d2*f;

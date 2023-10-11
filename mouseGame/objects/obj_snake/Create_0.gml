@@ -1,7 +1,7 @@
 moveSpeed=15;
 bWidth=10;	//body width
 bHeight=16;	//body height
-bLength=17;	//body length
+bLength=5;	//body length
 sWidth=10;	//skin width
 ateCounter=-1;
 bellySpeed=0.1;

@@ -3,3 +3,9 @@
 > mouse pathfind
 
 
+
+> things that u bump off of
+> other snake?
+
+> pokemon gym thing
+> adjust speed according to size?

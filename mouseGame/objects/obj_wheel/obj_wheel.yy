@@ -28,7 +28,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_wheel",
+    "path": "sprites/spr_wheel/spr_wheel.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }
