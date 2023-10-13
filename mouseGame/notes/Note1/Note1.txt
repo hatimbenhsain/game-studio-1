@@ -6,7 +6,7 @@
 > things that u bump off of
 > other snake?
 > fix strangle thing
-
+> change inflating time/array when bigger
 
 > pokemon gym thing
 > adjust speed according to size?
