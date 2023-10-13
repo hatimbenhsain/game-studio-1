@@ -1,7 +1,7 @@
 moveSpeed=15;
 bWidth=10;	//body width
 bHeight=16;	//body height
-bLength=5;	//body length
+bLength=10;	//body length
 sWidth=10;	//skin width
 ateCounter=-1;
 bellySpeed=0.1;
@@ -57,6 +57,9 @@ function addSkin(instA,w){
 	array_push(skinsB,s);
 }
 
+ouroborosMode=false;
+ouroborosJoint=-1;
+ouroborosDeleted=false;
 
 
 
@@ -73,3 +76,11 @@ for(i=0;i<bLength;i++){
 
 skins=array_concat(skinsA,array_reverse(skinsB));
 
+mouse_x_previous=mouse_x;
+mouse_y_previous=mouse_y;
+delta_mouse_x_previous=0;
+delta_mouse_y_previous=0;
+
+shakeCounter=0;
+shakeTime=0;
+shakeMaxTime=0.5;

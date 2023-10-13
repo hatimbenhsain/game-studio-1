@@ -1,11 +1,27 @@
 
 > restart "button"
-> mouse pathfind
+> shake off ouroboros
 
-
-
+> funky background stuff
 > things that u bump off of
 > other snake?
+> fix strangle thing
+
 
 > pokemon gym thing
 > adjust speed according to size?
+
+
+
+- switches
+- pulley door
+- points to eat?
+- music things
+- a maze
+- camera that moves
+- static camera that switches to other parts of the room
+- eat mouse
+- eating mouse takes a little time + eating animation
+- eating when in mouth only
+- creating a pathway?
+- winona gym pathway things 

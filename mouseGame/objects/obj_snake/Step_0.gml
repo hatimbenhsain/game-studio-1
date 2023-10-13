@@ -1,3 +1,13 @@
+delta_mouse_x = mouse_x - mouse_x_previous
+delta_mouse_y = mouse_y - mouse_y_previous
+delta_mouse=(delta_mouse_x^2+delta_mouse_y^2)^0.5
+
+if(delta_mouse>40 && (sign(delta_mouse_x)!=sign(delta_mouse_x_previous) || sign(delta_mouse_y)!=sign(delta_mouse_y_previous))){
+	shakeCounter+=1	
+	shakeTime=shakeMaxTime;
+}
+
+
 var l=((mouse_x-x)^2+(mouse_y-y)^2)^0.5;
 var xx=(mouse_x-x)/(l*100);
 var yy=(mouse_y-y)/(l*100);
@@ -31,12 +41,21 @@ with(obj_mouse){
 }
 eating=false;
 
-var inst=instance_place(x,y,obj_mouse)
-if(inst!=noone){
-	with(inst){
-		beingEaten=true;
-		eatenCounter+=delta_time/1000000;
-		obj_snake.eating=true;
+if(!ouroborosMode){
+	var inst=instance_place(x,y,obj_mouse)
+	if(inst!=noone){
+		with(inst){
+			beingEaten=true;
+			eatenCounter+=delta_time/1000000;
+			obj_snake.eating=true;
+		}
+	}
+	if(eating==false){
+		var inst=instance_place(x,y,obj_pebble)
+		if(inst!=noone){
+			instance_destroy(inst);
+			ateCounter=0;
+		}
 	}
 }
 
@@ -49,3 +68,31 @@ if(ateCounter>-1){
 		skins=array_concat(skinsA,array_reverse(skinsB));
 	}
 }
+
+var b=bodies[array_length(bodies)-1];
+if(place_meeting(x,y,b) && !ouroborosDeleted && !ouroborosMode){
+	var a=angle_difference(b.image_angle,image_angle);
+	a=0;
+	ouroborosJoint=physics_joint_revolute_create(id,b,x,y,a-90,a+90,true,0,0,false,false);
+	ouroborosMode=true;
+}else if(!place_meeting(x,y,b) && !ouroborosMode){
+	ouroborosDeleted=false;
+}
+
+if(ouroborosMode && shakeCounter>=5){
+	physics_joint_delete(ouroborosJoint);
+	ouroborosDeleted=true;
+	ouroborosMode=false;
+}
+
+shakeTime-=delta_time/1000000
+shakeTime=clamp(shakeTime,0,shakeMaxTime);
+if(shakeTime<=0){
+	shakeCounter=0;	
+}
+
+
+mouse_x_previous = mouse_x
+mouse_y_previous = mouse_y
+delta_mouse_x_previous=delta_mouse_x;
+delta_mouse_y_previous=delta_mouse_y;

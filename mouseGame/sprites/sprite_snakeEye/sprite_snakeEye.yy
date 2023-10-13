@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "sprite_snakeEye",
-  "bbox_bottom": 38,
+  "bbox_bottom": 35,
   "bbox_left": 35,
   "bbox_right": 41,
   "bbox_top": 29,

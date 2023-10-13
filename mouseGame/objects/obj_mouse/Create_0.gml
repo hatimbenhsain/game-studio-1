@@ -12,7 +12,7 @@ physics_fixture_bind_ext(fix,id,0,0);
 physics_fixture_delete(fix);
 
 eatenCounter=0;
-eatenMaxTime=1;
+eatenMaxTime=0.6;
 beingEaten=false;
 
 currentState="idle";
