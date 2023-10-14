@@ -1,7 +1,6 @@
 moveSpeed=15;
 bWidth=10;	//body width
 bHeight=16;	//body height
-bLength=10;	//body length
 sWidth=10;	//skin width
 ateCounter=-1;
 bellySpeed=0.1;
@@ -30,6 +29,8 @@ skinsB=[];
 
 bodies=[];
 
+alive=true;
+
 function addBody(instA,diff){	
 	var a=degtorad(instA.phy_rotation);
 	var b=instance_create_layer(instA.x-(bHeight+diff)*cos(a),instA.y-(bHeight+diff)*sin(a),instA.layer,obj_snakeBody);
@@ -38,6 +39,7 @@ function addBody(instA,diff){
 	physics_joint_revolute_create(instA,b,instA.x-(bHeight+diff)*cos(a)/2,instA.y-(bHeight+diff)*sin(a)/2,0,0,false,100,50,false,true);
 	b.phy_rotation=0;
 	addSkin(b,bWidth);
+	b.phy_rotation=instA.phy_rotation;
 	array_push(bodies,b);
 	return b;
 }
@@ -84,3 +86,8 @@ delta_mouse_y_previous=0;
 shakeCounter=0;
 shakeTime=0;
 shakeMaxTime=0.5;
+
+initX=x;
+initY=y;
+
+spawnCounter=0;

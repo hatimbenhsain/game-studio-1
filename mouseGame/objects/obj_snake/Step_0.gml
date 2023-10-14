@@ -22,15 +22,18 @@ if(dist<=16){
 	f=dist/16
 }
 
-physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f, dir), lengthdir_y(moveSpeed*f, dir));
+if(alive){
+	f=f*spawnCounter/2;
+	physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f, dir), lengthdir_y(moveSpeed*f, dir));
 
-//if(abs(distance_to_point(mouse_x,mouse_y))<=1){
-//	physics_apply_force(x, y,(x-phy_linear_velocity_x)*0.01,(y-phy_linear_velocity_y)*0.01);
-//}
+	//if(abs(distance_to_point(mouse_x,mouse_y))<=1){
+	//	physics_apply_force(x, y,(x-phy_linear_velocity_x)*0.01,(y-phy_linear_velocity_y)*0.01);
+	//}
 
-var turnRate=100/room_speed;
-var ad=angle_difference(-dir,phy_rotation);
-phy_rotation=lerp(phy_rotation,phy_rotation+ad,0.05);
+	var turnRate=100/room_speed;
+	var ad=angle_difference(-dir,phy_rotation);
+	phy_rotation=lerp(phy_rotation,phy_rotation+ad,0.05);
+}
 //}else{
 //	physics_apply_impulse(x, y,y-phy_linear_velocity_x,y-phy_linear_velocity_y);
 
@@ -41,7 +44,7 @@ with(obj_mouse){
 }
 eating=false;
 
-if(!ouroborosMode){
+if(!ouroborosMode && alive){
 	var inst=instance_place(x,y,obj_mouse)
 	if(inst!=noone){
 		with(inst){
@@ -64,13 +67,14 @@ if(ateCounter>-1){
 	if(ateCounter>=bellySpeed*bLength){
 		ateCounter=-1;	
 		var b=addBody(bodies[array_length(bodies)-1],difX);	
+		bLength+=1;
 		currentLength+=1
 		skins=array_concat(skinsA,array_reverse(skinsB));
 	}
 }
 
 var b=bodies[array_length(bodies)-1];
-if(place_meeting(x,y,b) && !ouroborosDeleted && !ouroborosMode){
+if(ateCounter==-1 && place_meeting(x,y,b) && !ouroborosDeleted && !ouroborosMode){
 	var a=angle_difference(b.image_angle,image_angle);
 	a=0;
 	ouroborosJoint=physics_joint_revolute_create(id,b,x,y,a-90,a+90,true,0,0,false,false);
@@ -91,8 +95,28 @@ if(shakeTime<=0){
 	shakeCounter=0;	
 }
 
+//respawning
+if(mouse_check_button_pressed(mb_left) && ateCounter==-1){
+	var bl=bLength;
+	instance_create_layer(x,y,layer,obj_snakeVanishParticle);
+	with(obj_snakeSkin){
+		instance_destroy(self);	
+	}
+	with(obj_snakeBody){
+		instance_create_layer(x,y,layer,obj_snakeVanishParticle);
+		instance_destroy(self);	
+	}
+	obj_gm.respawnCounter=0;
+	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl};
+	alive=false;
+}
+
 
 mouse_x_previous = mouse_x
 mouse_y_previous = mouse_y
 delta_mouse_x_previous=delta_mouse_x;
 delta_mouse_y_previous=delta_mouse_y;
+
+if(spawnCounter<2){
+	spawnCounter+=delta_time/1000000;
+}

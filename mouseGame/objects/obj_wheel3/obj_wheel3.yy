@@ -33,8 +33,8 @@
   ],
   "solid": false,
   "spriteId": {
-    "name": "spr_wheel2",
-    "path": "sprites/spr_wheel2/spr_wheel2.yy",
+    "name": "spr_wheel3",
+    "path": "sprites/spr_wheel3/spr_wheel3.yy",
   },
   "spriteMaskId": null,
   "visible": true,

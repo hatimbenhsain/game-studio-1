@@ -15,3 +15,5 @@ window_set_cursor(cr_none);
 cursor_sprite=spr_cursor
 
 physics_world_update_iterations(30);
+
+respawnCounter=-1;

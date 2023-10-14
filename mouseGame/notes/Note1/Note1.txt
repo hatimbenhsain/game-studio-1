@@ -1,12 +1,14 @@
 
-> restart "button"
-> shake off ouroboros
+> draw restart "button"
+> implement restart button
+> despawn particles
+> try raycasting new body
 
 > funky background stuff
 > things that u bump off of
 > other snake?
 > fix strangle thing
-> change inflating time/array when bigger
+> add tutorial images for ouroboros off
 
 > pokemon gym thing
 > adjust speed according to size?
