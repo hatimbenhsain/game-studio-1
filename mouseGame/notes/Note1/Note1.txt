@@ -1,10 +1,12 @@
 
 > draw restart "button"
 > implement restart button
+> draw checkpoint
+> activate checkpoint
 > try raycasting new body
 
 > funky background stuff
-> things that u bump off of
+
 > other snake?
 > fix strangle thing
 > add tutorial images for ouroboros off

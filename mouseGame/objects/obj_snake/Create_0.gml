@@ -4,10 +4,21 @@ bHeight=16;	//body height
 sWidth=10;	//skin width
 ateCounter=-1;
 bellySpeed=0.1;
+difX=5;
 
 eating=false;
 
 hWidth=7; //head width
+
+initX=x;
+initY=y;
+
+x=initX+(bLength*(bHeight+difX)-difX)/2;
+
+show_debug_message("depth");
+show_debug_message(depth);
+
+depth=-1;
 
 var fix=physics_fixture_create();
 physics_fixture_set_box_shape(fix,bHeight/2,hWidth/2,);
@@ -20,7 +31,7 @@ physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind(fix,id);
 physics_fixture_delete(fix);
 
-difX=5;
+
 
 currentLength=0
 
@@ -87,8 +98,7 @@ shakeCounter=0;
 shakeTime=0;
 shakeMaxTime=0.5;
 
-initX=x;
-initY=y;
+
 
 spawnCounter=0;
 

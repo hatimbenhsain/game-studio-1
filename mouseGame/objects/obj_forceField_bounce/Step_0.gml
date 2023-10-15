@@ -6,22 +6,21 @@ rad2=rad2+rad*delta_time/(1000000*time);
 if(rad2>rad){
 	rad2=0;	
 }
-rad2=rad/2;
 
 var closestBody=-1;
 var d=rad*2;
 var ff=id;
 
-//with(obj_snakeBody){
-//	var d2=distance_to_object(ff);
-//	if(d2<d){
-//		closestBody=id;
-//		d=d2;
-//	}
-//}
+with(obj_snakeBody){
+	var d2=distance_to_point(ff.x,ff.y);
+	if(d2<d){
+		closestBody=id;
+		d=d2;
+	}
+}
 
 with(obj_snake){
-	var d2=distance_to_object(ff);
+	var d2=distance_to_point(ff.x,ff.y);
 	if(d2<d){
 		closestBody=id;
 		d=d2;
