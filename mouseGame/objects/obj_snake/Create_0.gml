@@ -106,3 +106,6 @@ stunLength=0;
 stunLength2=0;
 
 respawn=false;
+
+tCamX=x-camera_get_view_width(view_camera[0])/2;
+tCamY=y-camera_get_view_height(view_camera[0])/2;

@@ -1,8 +1,4 @@
-
-> draw restart "button"
-> implement restart button
-> draw checkpoint
-> activate checkpoint
+> camera
 > try raycasting new body
 
 > funky background stuff
@@ -10,6 +6,9 @@
 > other snake?
 > fix strangle thing
 > add tutorial images for ouroboros off
+> ouroboros win condition?
+
+> level design
 
 > pokemon gym thing
 > adjust speed according to size?

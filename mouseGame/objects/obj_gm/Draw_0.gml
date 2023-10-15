@@ -17,12 +17,14 @@ var w=10
 for(var i=0;i<array_length(lines);i++){
 	var l=lines[i];
 	draw_set_alpha(l.a*sin(pi*(counter%10)/10));
+	var cx=camera_get_view_x(view_camera[0]);
+	var cy=camera_get_view_y(view_camera[0]);
 	if(l.vertical){
-		draw_line(l.x%camera_get_view_width(view_camera[0]),camera_get_view_y(view_camera[0]),l.x%camera_get_view_width(view_camera[0]),
+		draw_line(l.x%camera_get_view_width(view_camera[0])+cx,camera_get_view_y(view_camera[0]),l.x%camera_get_view_width(view_camera[0])+cx,
 		camera_get_view_y(view_camera[0])+camera_get_view_height(view_camera[0]));
 	}else{
-		draw_line(camera_get_view_x(view_camera[0]),l.y%camera_get_view_height(view_camera[0]),
-		camera_get_view_x(view_camera[0])+camera_get_view_width(view_camera[0]),l.y%camera_get_view_height(view_camera[0]));
+		draw_line(camera_get_view_x(view_camera[0]),l.y%camera_get_view_height(view_camera[0])+cy,
+		camera_get_view_x(view_camera[0])+camera_get_view_width(view_camera[0]),l.y%camera_get_view_height(view_camera[0])+cy);
 	}
 }
 

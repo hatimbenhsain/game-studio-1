@@ -134,3 +134,30 @@ stunLength2-=delta_time/1000000;
 
 stunLength=clamp(stunLength,0,10);
 stunLength2=clamp(stunLength2,0,10);
+
+var camW=camera_get_view_width(view_camera[0]);
+var camH=camera_get_view_height(view_camera[0]);
+var camX=camera_get_view_x(view_camera[0]);
+var camY=camera_get_view_y(view_camera[0]);
+var l=0.005;
+var dx=abs(x-(camX+camW/2));
+var dy=abs(y-(camY+camH/2));
+var d=(dx+dy*2)/3
+if(d>200 && alive){
+	tCamX=x-camW/2;
+	tCamY=y-camH/2;
+	if(d>400){
+		l=0.01;
+	}
+	if(d>600){
+		l=0.05;	
+	}
+	//l=l+(clamp(d,400,600)-400)*0.05/200;
+	if(spawnCounter<2){
+		l+=0.02*(2-spawnCounter)/2;
+	}
+}
+camera_set_view_pos(view_camera[0],lerp(camX+camW/2,tCamX+camW/2,l)-camW/2,lerp(camY+camH/2,tCamY+camH/2,l)-camH/2);
+//if(distance_to_point(camX+camW/2,camY+camH/2)>200){
+//	camera_set_view_pos(view_camera[0],lerp(camX+camW/2,x,l)-camW/2,lerp(camY+camH/2,y,l)-camH/2);
+//}
