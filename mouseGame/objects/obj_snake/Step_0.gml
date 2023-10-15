@@ -103,8 +103,9 @@ if(shakeTime<=0){
 }
 
 //respawning
-if(mouse_check_button_pressed(mb_left) && ateCounter==-1){
+if(respawn && ateCounter==-1){
 	var bl=bLength;
+	respawn=false;
 	instance_create_layer(x,y,layer,obj_snakeVanishParticle);
 	with(obj_snakeSkin){
 		instance_destroy(self);	

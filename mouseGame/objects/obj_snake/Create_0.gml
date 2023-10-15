@@ -104,3 +104,5 @@ spawnCounter=0;
 
 stunLength=0;
 stunLength2=0;
+
+respawn=false;
