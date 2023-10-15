@@ -22,6 +22,13 @@ if(dist<=16){
 	f=dist/16
 }
 
+if(stunLength>0){
+	f=0;	
+	image_index=18;
+}else if(stunLength2>0){
+	f=f*1-stunLength2;	
+}
+
 if(alive){
 	f=f*spawnCounter/2;
 	physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f, dir), lengthdir_y(moveSpeed*f, dir));
@@ -120,3 +127,9 @@ delta_mouse_y_previous=delta_mouse_y;
 if(spawnCounter<2){
 	spawnCounter+=delta_time/1000000;
 }
+
+stunLength-=delta_time/1000000;
+stunLength2-=delta_time/1000000;
+
+stunLength=clamp(stunLength,0,10);
+stunLength2=clamp(stunLength2,0,10);

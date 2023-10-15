@@ -1,7 +1,6 @@
 
 > draw restart "button"
 > implement restart button
-> despawn particles
 > try raycasting new body
 
 > funky background stuff
