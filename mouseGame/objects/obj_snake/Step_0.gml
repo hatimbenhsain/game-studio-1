@@ -31,7 +31,7 @@ if(stunLength>0){
 
 if(alive){
 	f=f*spawnCounter/2;
-	physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f, dir), lengthdir_y(moveSpeed*f, dir));
+	physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f*60/(max(fps,30)), dir), lengthdir_y(moveSpeed*f*60/(max(fps,30)), dir));
 
 	//if(abs(distance_to_point(mouse_x,mouse_y))<=1){
 	//	physics_apply_force(x, y,(x-phy_linear_velocity_x)*0.01,(y-phy_linear_velocity_y)*0.01);
@@ -181,6 +181,7 @@ if(d>200 && alive){
 		l+=0.02*(2-spawnCounter)/2;
 	}
 }
+l=l*60/(max(fps,30));
 camX=lerp(camX+camW/2,tCamX+camW/2,l)-camW/2;
 camY=lerp(camY+camH/2,tCamY+camH/2,l)-camH/2;
 

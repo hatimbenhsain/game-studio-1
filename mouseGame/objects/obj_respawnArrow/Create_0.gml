@@ -10,3 +10,5 @@ initX=x;
 initY=y;
 
 respawned=true;
+
+depth=-100;

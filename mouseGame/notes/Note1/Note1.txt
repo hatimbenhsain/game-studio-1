@@ -17,6 +17,9 @@
 > pokemon gym thing
 > adjust speed according to size?
 
+> do wall shader
+>  OR find all collision instances once
+> respawn thingy outline
 
 
 - switches
