@@ -10,10 +10,9 @@
 
 > level design
 
-> screen shake when respawn
-> add munch sound
 > add checkpoint animation
 > checkpoint sound
+> new body sound
 
 > pokemon gym thing
 > adjust speed according to size?

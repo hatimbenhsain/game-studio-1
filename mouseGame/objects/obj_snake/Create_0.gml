@@ -109,3 +109,8 @@ respawn=false;
 
 tCamX=x-camera_get_view_width(view_camera[0])/2;
 tCamY=y-camera_get_view_height(view_camera[0])/2;
+
+eatingSound=-1;
+eatingSounds=[snd_snakeEat1,snd_snakeEat2,snd_snakeEat3];
+
+screenShake=0;

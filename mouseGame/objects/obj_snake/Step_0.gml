@@ -49,6 +49,8 @@ var sn=id;
 with(obj_mouse){
 	beingEaten=false;	
 }
+
+var wasEating=eating;
 eating=false;
 
 if(!ouroborosMode && alive){
@@ -67,16 +69,31 @@ if(!ouroborosMode && alive){
 			ateCounter=0;
 		}
 	}
+	if(eating){
+		if(eatingSound==-1 || !audio_is_playing(eatingSound)){
+			eatingSound=audio_play_sound(eatingSounds[floor(random_range(0,array_length(eatingSounds)))],1,false,1);	
+		}
+	}else if(wasEating){
+		//audio_stop_sound(eatingSound);
+		audio_sound_gain(eatingSound,0,250)
+	}
+	
+	if(audio_sound_get_gain(eatingSound)==0){
+		audio_stop_sound(eatingSound);	
+	}
 }
 
 if(ateCounter>-1){
 	ateCounter+=delta_time/1000000
 	if(ateCounter>=bellySpeed*bLength){
+		shakeIntensity=1;
+		screenShake=0.2;
 		ateCounter=-1;	
 		var b=addBody(bodies[array_length(bodies)-1],difX);	
 		bLength+=1;
 		currentLength+=1
 		skins=array_concat(skinsA,array_reverse(skinsB));
+		audio_play_sound(snd_pop,1,false,1);
 	}
 }
 
@@ -99,7 +116,7 @@ if(ouroborosMode && shakeCounter>=5){
 shakeTime-=delta_time/1000000
 shakeTime=clamp(shakeTime,0,shakeMaxTime);
 if(shakeTime<=0){
-	shakeCounter=0;	
+	shakeTime=0;	
 }
 
 //respawning
@@ -114,6 +131,8 @@ if(respawn && ateCounter==-1){
 		instance_create_layer(x,y,layer,obj_snakeVanishParticle);
 		instance_destroy(self);	
 	}
+	screenShake=0.3;
+	shakeIntensity=6;
 	obj_gm.respawnCounter=0;
 	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl};
 	alive=false;
@@ -134,6 +153,11 @@ stunLength2-=delta_time/1000000;
 
 stunLength=clamp(stunLength,0,10);
 stunLength2=clamp(stunLength2,0,10);
+
+if(screenShake>0){
+	screenShake-=delta_time/1000000;
+	screenShake=clamp(screenShake,0,10);
+}
 
 var camW=camera_get_view_width(view_camera[0]);
 var camH=camera_get_view_height(view_camera[0]);
@@ -157,7 +181,16 @@ if(d>200 && alive){
 		l+=0.02*(2-spawnCounter)/2;
 	}
 }
-camera_set_view_pos(view_camera[0],lerp(camX+camW/2,tCamX+camW/2,l)-camW/2,lerp(camY+camH/2,tCamY+camH/2,l)-camH/2);
+camX=lerp(camX+camW/2,tCamX+camW/2,l)-camW/2;
+camY=lerp(camY+camH/2,tCamY+camH/2,l)-camH/2;
+
+if(screenShake>0){
+	camX+=random_range(-shakeIntensity,shakeIntensity);
+	camY+=random_range(-shakeIntensity,shakeIntensity);
+}
+
+camera_set_view_pos(view_camera[0],camX,camY);
+
 //if(distance_to_point(camX+camW/2,camY+camH/2)>200){
 //	camera_set_view_pos(view_camera[0],lerp(camX+camW/2,x,l)-camW/2,lerp(camY+camH/2,y,l)-camH/2);
 //}

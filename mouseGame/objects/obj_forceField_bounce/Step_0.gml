@@ -43,5 +43,7 @@ if(d<rad2){
 	with(obj_snake){
 		stunLength=0.5;
 		stunLength2=stunLength+0.5;
+		screenShake=0.3;
+		shakeIntensity=6;
 	}
 }
