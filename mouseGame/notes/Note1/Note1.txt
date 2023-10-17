@@ -20,7 +20,7 @@
 > do wall shader
 >  OR find all collision instances once
 > respawn thingy outline
-
+> stop camera drag
 
 - switches
 - pulley door
