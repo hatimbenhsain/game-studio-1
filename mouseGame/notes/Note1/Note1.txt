@@ -1,28 +1,21 @@
-> camera
-> try raycasting new body
-
-> funky background stuff
-
-> other snake?
 > fix strangle thing
-> add tutorial images for ouroboros off
-> ouroboros win condition?
-> make pebble add 0.5 points?
 
-> level design
-
-> add checkpoint animation
-> checkpoint sound
-> respawn sound
-> ate pebble sound
-
-> pokemon gym thing
 > adjust speed according to size?
 
-> do wall shader
->  OR find all collision instances once
-> respawn thingy outline
 > stop camera drag
+
+> finish level
+> add win condition
+> populate w/ food
+> make pebbles not immediately add size
+> add kill sound + pebble eat sound + activate checkpoint sound + respawn sound + bounce sound
+> wall shader/find collisions once
+> add starting cinematic thing
+> add tutorial images (mouse + ouroboros)
+> finish + add music
+> fix camera
+> checkpoint animation
+> try raycasting new body
 
 - switches
 - pulley door

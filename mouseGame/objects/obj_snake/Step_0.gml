@@ -107,7 +107,7 @@ if(ateCounter==-1 && place_meeting(x,y,b) && !ouroborosDeleted && !ouroborosMode
 	ouroborosDeleted=false;
 }
 
-if(ouroborosMode && shakeCounter>=5){
+if(ouroborosMode && shakeCounter>=3){
 	physics_joint_delete(ouroborosJoint);
 	ouroborosDeleted=true;
 	ouroborosMode=false;
