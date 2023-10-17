@@ -24,11 +24,11 @@ if(place_meeting(x,y,obj_snake)){
 	bodiesInside=0;
 }
 
-if(bodiesInside>=minBodies){
+if(bodiesInside>=1){
 	inside=true;
 }
 
-if(touching){
+if(touching && !finishedGoingUp){
 	if(image_alpha<0.5){
 		image_alpha=lerp(image_alpha,0.5,0.01);	
 	}
@@ -36,13 +36,28 @@ if(touching){
 	image_alpha=lerp(image_alpha,0.25,0.1);	
 }
 
-if(inside && obj_snake.ouroborosMode){
+if(!touching){
+	finishedGoingUp=false;
+	buffer=2;	
+}
+
+if(inside && obj_snake.ouroborosMode && !finishedGoingUp){
 	insideCounter+=delta_time/1000000;
 }else{
 	insideCounter-=2*delta_time/1000000;
 }
 
 insideCounter=clamp(insideCounter,0,timeToEnd);
+
+if(bodiesInside<minBodies && inside){
+	insideCounter=clamp(insideCounter,0,timeToComplete*bodiesInside/minBodies);
+	if(obj_snake.bLength<minBodies && insideCounter>=timeToComplete*bodiesInside/minBodies){
+		buffer-=delta_time/1000000;
+		if(buffer<=0){
+			finishedGoingUp=true;
+		}
+	}
+}		
 
 var c=clamp(insideCounter,0,timeToComplete);
 

@@ -5,10 +5,10 @@
 > stop camera drag
 
 > finish level
-> add win condition
 > populate w/ food
 > make pebbles not immediately add size
 > add kill sound + pebble eat sound + activate checkpoint sound + respawn sound + bounce sound
+> add end sound
 > wall shader/find collisions once
 > add starting cinematic thing
 > add tutorial images (mouse + ouroboros)

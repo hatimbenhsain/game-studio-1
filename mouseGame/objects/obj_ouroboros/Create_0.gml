@@ -13,3 +13,7 @@ insideCounter=0;
 
 timeToComplete=2;
 timeToEnd=10;
+
+finishedGoingUp=false;
+
+buffer=2;
