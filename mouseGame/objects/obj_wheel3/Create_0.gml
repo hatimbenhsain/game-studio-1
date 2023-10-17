@@ -11,16 +11,21 @@ image_angle=0;
 phy_rotation=0;
 
 var inst=-1;
+var minD=10000;
+var wheel=id;
 
 with(obj_door){
 	if(!linked){
-		inst=id;
-		linked=true;
-		break;
+		var d=distance_to_object(wheel);
+		if(d<minD){
+			inst=id;
+			minD=d;
+		}
 	}
 }
 
 if(inst!=-1){
+	inst.linked=true;
 	physics_joint_gear_create(id,inst,joint,inst.joint,0.5)
 }
 

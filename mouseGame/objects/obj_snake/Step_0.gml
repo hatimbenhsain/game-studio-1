@@ -101,7 +101,7 @@ var b=bodies[array_length(bodies)-1];
 if(ateCounter==-1 && place_meeting(x,y,b) && !ouroborosDeleted && !ouroborosMode){
 	var a=angle_difference(b.image_angle,image_angle);
 	a=0;
-	ouroborosJoint=physics_joint_revolute_create(id,b,x,y,a-90,a+90,true,0,0,false,false);
+	ouroborosJoint=physics_joint_revolute_create(id,b,x,y,a-90,a+90,true,0,0,false,true);
 	ouroborosMode=true;
 }else if(!place_meeting(x,y,b) && !ouroborosMode){
 	ouroborosDeleted=false;
@@ -117,6 +117,7 @@ shakeTime-=delta_time/1000000
 shakeTime=clamp(shakeTime,0,shakeMaxTime);
 if(shakeTime<=0){
 	shakeTime=0;	
+	shakeCounter=0;
 }
 
 //respawning

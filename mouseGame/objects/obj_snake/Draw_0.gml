@@ -81,4 +81,5 @@ if(alive){
 	//draw_circle(x,y,2,true);
 	draw_self();
 
+	draw_text(x+10,y,shakeCounter);
 }

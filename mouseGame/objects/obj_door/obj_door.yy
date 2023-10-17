@@ -34,11 +34,13 @@
     {"x":0.0,"y":64.0,},
   ],
   "physicsStartAwake": true,
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"linked","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
+  ],
   "solid": false,
   "spriteId": {
-    "name": "spr_wall",
-    "path": "sprites/spr_wall/spr_wall.yy",
+    "name": "spr_door",
+    "path": "sprites/spr_door/spr_door.yy",
   },
   "spriteMaskId": null,
   "visible": true,

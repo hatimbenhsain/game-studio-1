@@ -10,4 +10,3 @@ physics_fixture_delete(fix);
 
 joint=physics_joint_prismatic_create(obj_wall,id,x,y,0,10,-sprite_height,0,true,0,0,0,0);
 
-linked=false;
