@@ -116,3 +116,7 @@ eatingSound=-1;
 eatingSounds=[snd_snakeEat1,snd_snakeEat2,snd_snakeEat3];
 
 screenShake=0;
+
+pebblesAte=0;
+pebblesToGrow=2;
+atePebbleCounter=0;

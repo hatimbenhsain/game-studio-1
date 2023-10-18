@@ -9,7 +9,7 @@ if(alive){
 	var points=[];
 
 	var f=1;
-	if((eating && image_index%2<=1)){
+	if(((eating || atePebbleCounter>0) && image_index%2<=1)){
 		f=1.8;
 	}
 

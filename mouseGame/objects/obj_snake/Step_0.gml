@@ -2,6 +2,9 @@ delta_mouse_x = mouse_x - mouse_x_previous
 delta_mouse_y = mouse_y - mouse_y_previous
 delta_mouse=(delta_mouse_x^2+delta_mouse_y^2)^0.5
 
+atePebbleCounter-=delta_time/1000000;
+atePebbleCounter=clamp(atePebbleCounter,0,2);
+
 if(delta_mouse>40 && (sign(delta_mouse_x)!=sign(delta_mouse_x_previous) || sign(delta_mouse_y)!=sign(delta_mouse_y_previous))){
 	shakeCounter+=1	
 	shakeTime=shakeMaxTime;
@@ -66,7 +69,12 @@ if(!ouroborosMode && alive){
 		var inst=instance_place(x,y,obj_pebble)
 		if(inst!=noone){
 			instance_destroy(inst);
-			ateCounter=0;
+			pebblesAte+=1;
+			atePebbleCounter=0.5;
+			if(pebblesAte>=pebblesToGrow){
+				ateCounter=0;
+				pebblesAte=0;
+			}
 		}
 	}
 	if(eating){
