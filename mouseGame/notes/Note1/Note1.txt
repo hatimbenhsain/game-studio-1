@@ -4,8 +4,6 @@
 
 > stop camera drag
 
-> finish level
-> populate w/ food
 > add kill sound + pebble eat sound + activate checkpoint sound + respawn sound + bounce sound
 > add end sound
 > wall shader/find collisions once
@@ -14,6 +12,8 @@
 > finish + add music
 > fix camera
 > checkpoint animation
+> fadeout during respawn
+> playtest
 > try raycasting new body
 
 - switches

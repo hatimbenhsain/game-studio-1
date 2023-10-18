@@ -15,6 +15,7 @@ if(respawnCounter>-0.8){
 		}
 		var s=instance_create_layer(snakeInfo.x,snakeInfo.y,layer_get_id("instances"),obj_snake,{bLength:snakeInfo.bLength});
 		respawnCounter=-1;
+		audio_play_sound(snd_respawn2,1,false,1);
 	}
 }
 

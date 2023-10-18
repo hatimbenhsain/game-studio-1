@@ -18,12 +18,13 @@ with(obj_snakeBody){
 		d=d2;
 	}
 }
-
+var hitHead=false;
 with(obj_snake){
 	var d2=distance_to_point(ff.x,ff.y);
 	if(d2<d){
 		closestBody=id;
 		d=d2;
+		hitHead=true;
 	}
 }
 
@@ -41,8 +42,10 @@ if(d<rad2){
 		physics_apply_impulse(x,y,lengthdir_x(m,dir),lengthdir_y(m,dir));
 	}	
 	with(obj_snake){
-		stunLength=0.5;
-		stunLength2=stunLength+0.5;
+		if(hitHead){
+			stunLength=0.5;
+			stunLength2=stunLength+0.5;
+		}
 		screenShake=0.3;
 		shakeIntensity=6;
 	}

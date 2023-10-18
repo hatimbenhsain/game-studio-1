@@ -71,6 +71,7 @@ if(!ouroborosMode && alive){
 			instance_destroy(inst);
 			pebblesAte+=1;
 			atePebbleCounter=0.5;
+			audio_play_sound(eatingSounds2[floor(random(2))],1,false,1);
 			if(pebblesAte>=pebblesToGrow){
 				ateCounter=0;
 				pebblesAte=0;
@@ -145,6 +146,7 @@ if(respawn && ateCounter==-1){
 	obj_gm.respawnCounter=0;
 	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl};
 	alive=false;
+	audio_play_sound(snd_death,1,false,1);
 }
 
 

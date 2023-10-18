@@ -114,6 +114,7 @@ tCamY=y-camera_get_view_height(view_camera[0])/2;
 
 eatingSound=-1;
 eatingSounds=[snd_snakeEat1,snd_snakeEat2,snd_snakeEat3];
+eatingSounds2=[snd_snakeEat4,snd_snakeEat5];
 
 screenShake=0;
 
