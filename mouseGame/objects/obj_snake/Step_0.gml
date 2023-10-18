@@ -150,7 +150,7 @@ if(respawn && ateCounter==-1){
 	shakeIntensity=6;
 	obj_gm.respawnCounter=0;
 	obj_respawnArrow.respawnCounter=0;
-	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl};
+	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl,pa:pebblesAte};
 	alive=false;
 	audio_play_sound(snd_death,1,false,1);
 }
