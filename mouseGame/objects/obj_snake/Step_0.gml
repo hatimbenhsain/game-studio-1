@@ -34,6 +34,11 @@ if(stunLength>0){
 
 if(alive){
 	f=f*spawnCounter/2;
+	
+	if(mouse1Alive && current_time<5000){
+		f=0;
+	}
+	
 	physics_apply_impulse(x, y, lengthdir_x(moveSpeed*f*60/(max(fps,30)), dir), lengthdir_y(moveSpeed*f*60/(max(fps,30)), dir));
 
 	//if(abs(distance_to_point(mouse_x,mouse_y))<=1){
@@ -144,6 +149,7 @@ if(respawn && ateCounter==-1){
 	screenShake=0.3;
 	shakeIntensity=6;
 	obj_gm.respawnCounter=0;
+	obj_respawnArrow.respawnCounter=0;
 	obj_gm.snakeInfo={x:initX,y:initY,bLength:bl};
 	alive=false;
 	audio_play_sound(snd_death,1,false,1);
@@ -181,11 +187,11 @@ var d=(dx+dy*2)/3
 if(d>200 && alive){
 	tCamX=x-camW/2;
 	tCamY=y-camH/2;
-	if(d>400){
+	if(d>300){
 		l=0.01;
 	}
-	if(d>600){
-		l=0.05;	
+	if(d>450){
+		l=0.1;	
 	}
 	//l=l+(clamp(d,400,600)-400)*0.05/200;
 	if(spawnCounter<2){
@@ -202,6 +208,21 @@ if(screenShake>0){
 }
 
 camera_set_view_pos(view_camera[0],camX,camY);
+
+var cw=camera_get_view_width(view_camera[0]);
+var ch=camera_get_view_height(view_camera[0]);
+
+var tw=display_get_width();
+var th=display_get_height();
+
+if(!mouse1Alive && (cw<tw || ch<tw)){
+	var prevCw=cw;
+	var prevCh=ch;
+	cw=ceil(lerp(cw,tw,0.05));
+	ch=ceil(lerp(ch,th,0.05));
+	camera_set_view_size(view_camera[0],cw,ch);
+	camera_set_view_pos(view_camera[0],camX-(cw-prevCw)/2,camY-(ch-prevCh)/2);
+}
 
 //if(distance_to_point(camX+camW/2,camY+camH/2)>200){
 //	camera_set_view_pos(view_camera[0],lerp(camX+camW/2,x,l)-camW/2,lerp(camY+camH/2,y,l)-camH/2);

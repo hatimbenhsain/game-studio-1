@@ -6,3 +6,8 @@ physics_fixture_set_friction(fix, 0.2);
 physics_fixture_set_collision_group(fix,1);
 physics_fixture_bind(fix, id);
 physics_fixture_delete(fix);
+
+foundEdges=false;
+edges=[];
+
+depth=-3;

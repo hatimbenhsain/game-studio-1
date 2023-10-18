@@ -73,4 +73,14 @@ var camY=camera_get_view_y(view_camera[0]);
 
 //physics_draw_debug();
 
-draw_self();
+//draw_self();
+
+if(foundEdges && !(x-sprite_width/2>camX+camW || x+sprite_width/2<camX || y-sprite_height/2>camY+camH || y+sprite_height/2<camY)){
+	
+	for(var i=0;i<array_length(edges);i+=2){
+		var p1=edges[i];	
+		var p2=edges[i+1];
+		draw_set_color(c_white);
+		draw_line(p1.x+x,p1.y+y,p2.x+x,p2.y+y);
+	}
+}

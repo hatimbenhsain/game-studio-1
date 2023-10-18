@@ -39,3 +39,5 @@ array_push(lines,{vertical:false,y:0+k+random_range(-5,5),behavior:"slowMove",di
 array_push(lines,{vertical:false,y:10+k+random_range(-5,5),behavior:"slowMove",dir:1,period:5+random_range(-0.5,0.5),
 	minSpeed:random_range(0,50),maxSpeed:random_range(100,150),timeOffset:random_range(0,5),a:random_range(minA,maxA)});
 }
+
+music=audio_play_sound(snd_music,1,true,1);

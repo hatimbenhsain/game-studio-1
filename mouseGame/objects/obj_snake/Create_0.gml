@@ -121,3 +121,5 @@ screenShake=0;
 pebblesAte=0;
 pebblesToGrow=2;
 atePebbleCounter=0;
+
+mouse1Alive=false;

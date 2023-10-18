@@ -49,4 +49,5 @@ if(d<rad2){
 		screenShake=0.3;
 		shakeIntensity=6;
 	}
+	audio_play_sound(sounds[floor(random(array_length(sounds)))],1,false,1);
 }

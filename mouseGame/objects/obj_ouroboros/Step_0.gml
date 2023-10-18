@@ -67,9 +67,13 @@ image_index=(sprite_get_number(sprite_index)-1)*c/timeToComplete;
 if(insideCounter>=timeToComplete){
 	obj_snake.screenShake=(insideCounter-timeToComplete)/2;
 	obj_snake.shakeIntensity=5*(insideCounter-timeToComplete)/(timeToEnd-timeToComplete)
+	audio_sound_gain(sound,(insideCounter-timeToComplete)/(timeToEnd-timeToComplete),0)
+	audio_sound_gain(obj_gm.music,1-(insideCounter-timeToComplete)/(timeToEnd-timeToComplete),0)
 	if(insideCounter>=timeToEnd){
 		game_end();
 	}		
+}else{
+	audio_sound_gain(obj_gm.music,1,0)
 }
 
 

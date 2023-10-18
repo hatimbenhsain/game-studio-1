@@ -17,3 +17,5 @@ timeToEnd=10;
 finishedGoingUp=false;
 
 buffer=2;
+
+sound=audio_play_sound(snd_heavyRain_amped,1,true,0);

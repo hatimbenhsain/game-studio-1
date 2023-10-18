@@ -9,5 +9,5 @@ if((beingEaten && eatenCounter%0.3<=0.15)
 draw_self();
 image_alpha=1;
 
-draw_rectangle(initialX-zoneW/2,initialY-zoneH/2,initialX+zoneW/2,initialY+zoneH/2,true)
+//draw_rectangle(initialX-zoneW/2,initialY-zoneH/2,initialX+zoneW/2,initialY+zoneH/2,true)
 //draw_point(targetX,targetY)

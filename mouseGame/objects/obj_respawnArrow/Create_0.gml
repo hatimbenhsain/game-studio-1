@@ -12,3 +12,5 @@ initY=y;
 respawned=true;
 
 depth=-100;
+
+respawnCounter=-1;
