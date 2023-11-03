@@ -1,0 +1,144 @@
+# Blender MTL File: 'None'
+# Material Count: 11
+
+newmtl m0030B1A13_0
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_00.png
+map_Bump m13_B_floor_00_n.png
+map_Ks m13_B_floor_00_s.png
+
+newmtl m0030B1A13_1
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_wall_00.png
+map_Bump m13_N_wall_00_n.png
+map_Ks m13_N_wall_00_s.png
+
+newmtl m0030B1A13_10
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_obj_pillar.png
+map_Bump m13_obj_pillar_n.png
+map_Ks m13_obj_pillar_s.png
+
+newmtl m0030B1A13_2
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_wall_01.png
+map_Bump m13_N_wall_01_n.png
+map_Ks m13_N_wall_01_S.png
+
+newmtl m0030B1A13_3
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_wall_09.png
+map_Bump m13_B_wall_09_n.png
+map_Ks m13_B_wall_09_s.png
+
+newmtl m0030B1A13_4
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_wall_10.png
+map_Bump m13_B_wall_10_n.png
+map_Ks m13_B_wall_10_s.png
+
+newmtl m0030B1A13_5
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_wall_11.png
+map_Bump m13_B_wall_11_n.png
+map_Ks m13_B_wall_11_s.png
+
+newmtl m0030B1A13_6
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_floor_00_add.png
+map_Bump m13_N_floor_00_n.png
+map_Ks m13_N_floor_00_s.png
+
+newmtl m0030B1A13_7
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_obj_tomb.png
+map_Bump m13_obj_tomb_n.png
+
+newmtl m0030B1A13_8
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_wall_02.png
+map_Bump m13_N_wall_02_n.png
+map_Ks m13_N_wall_02_s.png
+
+newmtl m0030B1A13_9
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_06.png
+map_Bump m13_B_floor_06_n.png
+map_Ks m13_B_floor_06_s.png

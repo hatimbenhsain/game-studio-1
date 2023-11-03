@@ -1,0 +1,15 @@
+# Blender MTL File: 'Torch.blend'
+# Material Count: 1
+
+newmtl Metal_A
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump Metal_A_NRM.png
+map_Kd Metal_A.png
+map_d Metal_A.png

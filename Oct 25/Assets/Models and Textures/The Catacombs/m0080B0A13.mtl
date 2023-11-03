@@ -1,0 +1,41 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl m0030B1A13_0
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_00.png
+map_Bump m13_B_floor_00_n.png
+map_Ks m13_B_floor_00_s.png
+
+newmtl m0030B1A13_1
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_01.png
+map_Bump m13_B_floor_01_n.png
+map_Ks m13_B_floor_01_s.png
+
+newmtl m0030B1A13_2
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_02_kaidan.png
+map_Bump m13_B_floor_02_kaidan_n.png
+map_Ks m13_B_floor_02_kaidan_s.png

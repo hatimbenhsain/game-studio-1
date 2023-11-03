@@ -1,0 +1,78 @@
+# Blender MTL File: 'None'
+# Material Count: 6
+
+newmtl m0030B1A13_0
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_B_floor_00.png
+map_Bump m13_B_floor_00_n.png
+map_Ks m13_B_floor_00_s.png
+
+newmtl m0030B1A13_1
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_wall_00.png
+map_Bump m13_N_wall_00_n.png
+map_Ks m13_N_wall_00_s.png
+
+newmtl m0030B1A13_2
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd m13_obj_bone_00.png
+map_Bump m13_obj_bone_00_n.png
+map_Ks m13_obj_bone_00_s.png
+map_d m13_obj_bone_00.png
+
+newmtl m0030B1A13_3
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_obj_bone_03.png
+
+newmtl m0030B1A13_4
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd m13_obj_bone_cloth_BD.png
+map_d m13_obj_bone_cloth_BD.png
+
+newmtl m0030B1A13_5
+Ns 31.372549
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd m13_N_wall_00.png
+map_Bump m13_N_wall_00_n.png
+map_Ks m13_N_wall_00_s.png
