@@ -1,0 +1,14 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl Altavoz
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.452830 0.452830 0.452830
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd altavoz_uv.png
+map_d altavoz_uv.png

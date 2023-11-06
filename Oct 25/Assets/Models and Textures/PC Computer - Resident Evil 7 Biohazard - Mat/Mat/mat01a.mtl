@@ -1,0 +1,8 @@
+newmtl sm0015_mat_sm0015_mat_mt
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd sm0015_mat_albm.png
+map_Ks sm0015_mat_albm.png
+map_bump sm0015_mat_nrmr.png
+

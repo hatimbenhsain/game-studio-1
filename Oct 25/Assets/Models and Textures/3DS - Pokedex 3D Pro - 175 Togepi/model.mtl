@@ -1,0 +1,44 @@
+newmtl BodyA
+ illum 2
+ Ka 0.6470588 0.6156863 0.4941176
+ Kd 0.8 0.8 0.8
+ Ks 0.4117647 0.4117647 0.4117647
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Togepy_bodyCl_ctr.png
+newmtl BodyB
+ illum 2
+ Ka 0.6470588 0.6235294 0.5960785
+ Kd 0.8 0.8 0.8
+ Ks 0.4117647 0.4117647 0.4117647
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Togepy_bodyCl_ctr.png
+newmtl Eye
+ illum 2
+ Ka 0.6470588 0.6156863 0.4941176
+ Kd 0.8 0.8 0.8
+ Ks 0.4117647 0.4117647 0.4117647
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Togepy_eyeCl_ctr.png
+newmtl Mouth
+ illum 2
+ Ka 0.6470588 0.6156863 0.4941176
+ Kd 0.8 0.8 0.8
+ Ks 0.4117647 0.4117647 0.4117647
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Togepy_mouthCl_ctr.png
+newmtl shadow_w
+ illum 2
+ Ka 0 0 0
+ Kd 0 0 0
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
