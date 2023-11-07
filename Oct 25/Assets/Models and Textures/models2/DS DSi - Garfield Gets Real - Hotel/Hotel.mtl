@@ -1,0 +1,24 @@
+newmtl TPage02B
+Ka 0.5647059 0.5647059 0.5647059
+Kd 0.5647059 0.5647059 0.5647059
+d 0.483871
+Tr 0.483871
+map_Ka TPage02B.png
+map_Kd TPage02B.png
+map_d TPage02B.png
+newmtl Texture_Page_02
+Ka 0.5647059 0.5647059 0.5647059
+Kd 0.5647059 0.5647059 0.5647059
+d 1
+Tr 1
+map_Ka Texture_Page_02.png
+map_Kd Texture_Page_02.png
+map_d Texture_Page_02.png
+newmtl Walls_n_Doors
+Ka 0.5647059 0.5647059 0.5647059
+Kd 0.5647059 0.5647059 0.5647059
+d 1
+Tr 1
+map_Ka Walls_n_Doors.png
+map_Kd Walls_n_Doors.png
+map_d Walls_n_Doors.png
