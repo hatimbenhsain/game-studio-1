@@ -1,0 +1,9 @@
+-- Ripped by Slipsy --
+Thanks to Foas, Lurker, Chaotic and the rest of GFI
+
+possible shader setup:
+[file]_c - base colour
+[file]_g - specular colour
+[file]_g_a - smoothness
+[file]_m_r - metallic
+[file]_n - normal map
