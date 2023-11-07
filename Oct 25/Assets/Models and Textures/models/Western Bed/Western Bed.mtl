@@ -1,0 +1,54 @@
+# Blender MTL File: 'ExportAll.blend'
+# Material Count: 4
+
+newmtl phong102.001
+Ns 94.117647
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd phong102.png
+map_Ka phong102.png
+map_d phong102.png
+
+newmtl phong103.001
+Ns 94.117647
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd phong103.png
+map_Ka phong103.png
+map_d phong103.png
+
+newmtl phong104.001
+Ns 94.117647
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd phong104.png
+map_Ka phong104.png
+map_d phong104.png
+
+newmtl phong25.001
+Ns 94.117647
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd phong25.png
+map_Ka phong25.png
+map_d phong25.png

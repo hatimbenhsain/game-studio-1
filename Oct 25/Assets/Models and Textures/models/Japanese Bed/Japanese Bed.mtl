@@ -1,0 +1,67 @@
+# Blender MTL File: 'ExportAll.blend'
+# Material Count: 5
+
+newmtl Material.020
+Ns 96.078431
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Material.png
+map_Ka Material.png
+map_d Material.png
+
+newmtl Material116
+Ns 96.078431
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Material116.png
+map_Ka Material116.png
+map_d Material116.png
+
+newmtl Material1235
+Ns 96.078431
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Material1235.png
+map_Ka Material1235.png
+map_d Material1235.png
+
+newmtl Material1236
+Ns 96.078431
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Material1236.png
+map_Ka Material1236.png
+map_d Material1236.png
+
+newmtl Material1322
+Ns 96.078431
+Ka 0.784314 0.784314 0.784314
+Kd 0.972549 0.972549 0.972549
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Material1322.png
+map_Ka Material1322.png
+map_d Material1322.png

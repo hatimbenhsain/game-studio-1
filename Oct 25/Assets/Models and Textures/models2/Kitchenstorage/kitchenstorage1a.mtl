@@ -1,0 +1,7 @@
+newmtl sm0010_KitchenStorage01A
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd sm0010_kitchenstorage01a_albm.png
+map_Ks sm0010_kitchenstorage01a_albm.png
+map_bump sm0010_kitchenstorage01a_nrmr.png

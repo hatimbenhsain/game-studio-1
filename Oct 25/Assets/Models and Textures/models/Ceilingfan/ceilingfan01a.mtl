@@ -1,0 +1,24 @@
+newmtl sm0056_Ceilingfan01A_A
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd sm0056_ceilingfan01a_a_albm.png
+map_Ks sm0056_ceilingfan01a_a_albm.png
+map_bump sm0056_ceilingfan01a_a_nrmr.png
+
+newmtl sm0056_Ceilingfan01A_B
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd sm0056_ceilingfan01a_a_albm.png
+map_Ks sm0056_ceilingfan01a_a_albm.png
+map_bump sm0056_ceilingfan01a_a_nrmr.png
+
+newmtl sm0056_Ceilingfan01A_C
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd sm0056_ceilingfan01a_a_albm.png
+map_Ks sm0056_ceilingfan01a_a_albm.png
+map_bump sm0056_ceilingfan01a_a_nrmr.png
+

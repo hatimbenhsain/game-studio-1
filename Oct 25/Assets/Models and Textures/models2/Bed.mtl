@@ -1,0 +1,54 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl New_Material
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.911765 0.717021 0.368728
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump -s 0.500000 0.500000 1.000000 blanket2.png
+map_Kd -s 0.500000 0.500000 1.000000 blanket.png
+map_d -s 0.500000 0.500000 1.000000 blanket.png
+
+newmtl New_Material_1
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump pillow1.png
+map_Kd pillow.png
+map_d pillow.png
+
+newmtl New_Material_2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump cloth_2.png
+map_Kd cloth_1.png
+map_d cloth_1.png
+
+newmtl New_Material_3
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.441176 0.441176 0.441176
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump 06571532_D.png
+map_Kd 06571532.png
+map_d 06571532.png

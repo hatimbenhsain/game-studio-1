@@ -1,0 +1,20 @@
+# Blender MTL File: 'None'
+# Material Count: 2
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd tvwall-[3c529b6b-5345-42a4-b6a4-5f0b4e255b82]-surface_txtr_256x512.png
+
+newmtl None_tvwall-[3c529b6b-5345-42a4-b6a4-5f0b4e255b82]-tvmoderate-screen
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd tvwall-[3c529b6b-5345-42a4-b6a4-5f0b4e255b82]-tvmoderate-screenoff_txtr_128x128.png

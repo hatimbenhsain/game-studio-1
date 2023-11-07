@@ -1,0 +1,1 @@
+Does not have a normal map texture some Dead Rising models don't this document will be in each model file that doesn't have a normal texture map.
