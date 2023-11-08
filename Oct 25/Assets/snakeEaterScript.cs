@@ -28,7 +28,7 @@ public class snakeEaterScript : MonoBehaviour
     void Update()
     {
         if(playingMusic && !exited){
-            audioSource.pitch=0.5f+0.5f*(1f-Vector3.Distance(player.position,transform.position)/Vector3.Distance(trigger2.position,transform.position));
+            audioSource.pitch=0.5f+Mathf.Clamp(0.5f*(1f-Vector3.Distance(player.position,transform.position)/Vector3.Distance(trigger2.position,transform.position)),0f,0.5f);
         }
         if(exited){
             audioSource.Stop();
