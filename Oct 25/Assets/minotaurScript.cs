@@ -29,6 +29,7 @@ public class minotaurScript : MonoBehaviour
                 foreach (var t in thingsToShow)
                 {
                     t.SetActive(true);
+                    GameObject.FindWithTag("GameController").GetComponent<AudioSource>().Stop();
                 }
             }
         }

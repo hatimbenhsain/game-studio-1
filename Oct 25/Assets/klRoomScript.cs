@@ -18,7 +18,7 @@ public class klRoomScript : MonoBehaviour
         initialScale=transform.parent.localScale;
         player=GameObject.FindWithTag("Player");
         minD=1f;
-        maxD=10f;
+        maxD=36f;
     }
 
     // Update is called once per frame
@@ -29,6 +29,7 @@ public class klRoomScript : MonoBehaviour
             s=1-Mathf.Cos((s*Mathf.PI)/2);
             transform.parent.localScale=new Vector3(initialScale.x,initialScale.y+(maxScale-initialScale.y)*s,initialScale.z);
         }
+        //Debug.Log(Vector3.Distance(transform.position,player.transform.position));
     }
 
     private void OnTriggerEnter(Collider other) {

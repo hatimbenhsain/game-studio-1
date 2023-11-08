@@ -28,6 +28,7 @@ public class gameManagerScript : MonoBehaviour
             {
                 t.SetActive(false);
             }
+            gameObject.GetComponent<AudioSource>().Stop();
             Destroy(gameObject);
         }
 

@@ -32,6 +32,7 @@ public class snakeEaterScript : MonoBehaviour
         }
         if(exited){
             audioSource.Stop();
+            GameObject.FindWithTag("GameController").GetComponent<AudioSource>().volume=1f;
         }
     }
 
@@ -41,6 +42,7 @@ public class snakeEaterScript : MonoBehaviour
             Debug.Log("collided player");
             if(!playingMusic){
                 audioSource.Play(0);
+                GameObject.FindWithTag("GameController").GetComponent<AudioSource>().volume=0.2f;
                 playingMusic=true;
             }
         }
