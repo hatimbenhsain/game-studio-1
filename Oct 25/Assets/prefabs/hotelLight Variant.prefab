@@ -17,6 +17,10 @@ PrefabInstance:
       value: -1.244
       objectReference: {fileID: 0}
     - target: {fileID: 4695151596988236116, guid: 5f2470c140246fa4990821f49655e339, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695151596988236116, guid: 5f2470c140246fa4990821f49655e339, type: 3}
       propertyPath: m_Shadows.m_NearPlane
       value: 1
       objectReference: {fileID: 0}
