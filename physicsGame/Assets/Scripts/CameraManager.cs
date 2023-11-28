@@ -22,7 +22,7 @@ public class CameraManager : MonoBehaviour
 
     private void Awake() {
         inputManager=FindObjectOfType<InputManager>();
-        targetTransform=FindObjectOfType<butterflyScript>().transform;
+        targetTransform=FindObjectOfType<ButterflyScript>().transform;
         Debug.Log("logging");
     }
 

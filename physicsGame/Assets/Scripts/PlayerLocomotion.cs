@@ -10,7 +10,7 @@ public class PlayerLocomotion : MonoBehaviour
     Transform cameraObject;
 
     InputManager inputManager;
-
+    ButterflyScript butterflyScript;
     Rigidbody playerRigidBody;
 
     public float movementSpeed=7f;
@@ -84,6 +84,7 @@ public class PlayerLocomotion : MonoBehaviour
             Vector3 playerVelocity=playerRigidBody.velocity;
             playerVelocity.y=jumpHeight;
             playerRigidBody.velocity=playerVelocity;
+            butterflyScript.Jump();
          }
     }
 }
