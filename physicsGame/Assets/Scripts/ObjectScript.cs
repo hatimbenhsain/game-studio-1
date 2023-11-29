@@ -25,7 +25,6 @@ public class ObjectScript : MonoBehaviour
         tornadoCenter=ts.transform;
         pullForce=f;
         pullResetTimer=1f;
-        Debug.Log(Vector3.Distance(tornadoCenter.position,transform.position));
     }
 
     public void ExitTornado(){
@@ -39,7 +38,7 @@ public class ObjectScript : MonoBehaviour
             Vector3 forceDir=tornadoCenter.position-transform.position;
             float d=Vector3.Distance(tornadoCenter.position,transform.position);
             float modifier=1f;
-            float r=tornadoScript.radius;
+            float r=tornadoScript.currentRadius;
             if(d>r){
                 modifier=Mathf.Clamp(1-(d-r)/(2*r),0f,1f);
             }

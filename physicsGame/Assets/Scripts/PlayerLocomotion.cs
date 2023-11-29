@@ -29,6 +29,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager=GetComponent<InputManager>();
         playerRigidBody=GetComponent<Rigidbody>();
         cameraObject=Camera.main.transform;
+        butterflyScript=FindObjectOfType<ButterflyScript>();
     }
 
     public void HandleAllMovement(){
@@ -80,7 +81,6 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleJumping(){
          if(isGrounded || isFlying){
-            Debug.Log("jump");
             Vector3 playerVelocity=playerRigidBody.velocity;
             playerVelocity.y=jumpHeight;
             playerRigidBody.velocity=playerVelocity;
