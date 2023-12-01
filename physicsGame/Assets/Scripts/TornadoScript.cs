@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class TornadoScript : MonoBehaviour
@@ -19,21 +20,22 @@ public class TornadoScript : MonoBehaviour
     public float minRadius=1f;
     public float maxRadius=1000f;
 
-    public float maxGrowthRate=10f;
-    public float minGrowthRate=-10f;
-
     public float jumpIncrease=1f;
 
     public float currentRadius=1f;
 
-    [Header("Behavior Type 2")]
+    
     private float period;
+    [Header("Behavior Type 2")]
     public float avgPeriod=0.9f;
     public float idealPeriod=0.9f;
-    public float incrementRate=0.1f;
-    public float incrementer=1f;
-    public float deincrementRate=0.5f;
-    public float maxIncrementRate=0.5f;
+    public float jumpIncrement=0.01f;
+    public float periodTreshold1=0.1f;
+    public float periodTreshold2=0.2f;
+    public float degrowthIncrement=0.2f;
+    public float minGrowthRate=0.8f;
+    public float maxGrowthRate=1.1f;
+    
 
     private bool jumped=false;
     
@@ -62,35 +64,51 @@ public class TornadoScript : MonoBehaviour
     private void Update() {
         period+=Time.deltaTime;
 
+        tornadoGrowthRate-=tornadoDegrowthRate*Time.deltaTime;
+
         if(jumped){
             jumped=false;
             if(behaviorType==1){
                 tornadoGrowthRate+=10f;
             }else if(behaviorType==2){
-                float ratio=Mathf.Abs(period/avgPeriod);
-                if(Mathf.Abs(ratio-1)<0.1){
-                    incrementRate=incrementRate+incrementer*period;
-                }else{
-                    incrementRate=incrementRate*deincrementRate;
-                    tornadoGrowthRate=tornadoGrowthRate-Mathf.Abs(ratio-1)+0.2f;
+                float periodDifference=Mathf.Abs(period-avgPeriod);
+                float mod=period;
+                if(mod<idealPeriod){
+                    mod=Mathf.Pow(period/idealPeriod,1.25f)*idealPeriod;
                 }
-                incrementRate=Mathf.Min(incrementRate,maxIncrementRate);
-                tornadoGrowthRate+=incrementRate;
+                if(periodDifference<periodTreshold1){
+                    float k=jumpIncrement*mod;
+                    tornadoGrowthRate+=k;
+                    Debug.Log("tresh 1 "+k);
+                }else if(periodDifference<periodTreshold2){
+                    float k=mod*(jumpIncrement*(periodTreshold2-periodDifference)-
+                degrowthIncrement*(periodDifference-periodTreshold1))/(periodTreshold2-periodTreshold1);
+                    tornadoGrowthRate+=k;
+                    Debug.Log("tresh 2 "+k);
+                }else{
+                    tornadoGrowthRate-=degrowthIncrement;
+                    Debug.Log("fail");
+                }
                 avgPeriod=(period+avgPeriod)/2;
             }
             period=0f;
         }
 
         currentRadius=transform.localScale.x;
-        currentRadius=currentRadius+tornadoGrowthRate*Time.deltaTime;
-        currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
-        transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
+        
+        
         if(behaviorType==1){
-            tornadoGrowthRate-=tornadoDegrowthRate*Time.deltaTime;
-            tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+            currentRadius=currentRadius+tornadoGrowthRate*Time.deltaTime;
+            currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
+            tornadoGrowthRate-=10f*Time.deltaTime;
+            tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,-10f,10f);
         }else if(behaviorType==2){
-
+            tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+            currentRadius=currentRadius*(1+Time.deltaTime*(tornadoGrowthRate-1));
+            currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
         }
+
+        transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
         
         
     }
