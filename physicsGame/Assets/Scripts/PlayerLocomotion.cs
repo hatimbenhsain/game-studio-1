@@ -41,11 +41,16 @@ public class PlayerLocomotion : MonoBehaviour
     private void HandleMovement(){
         moveDirection=cameraObject.forward*inputManager.verticalInput;
         moveDirection=moveDirection+cameraObject.right*inputManager.horizontalInput;
+        
+        float mag=Mathf.Clamp(moveDirection.magnitude,0f,1f);
+
         moveDirection.Normalize();
         moveDirection.y=0;
         moveDirection=moveDirection*movementSpeed;
 
-        Vector3 movementVelocity=new Vector3(moveDirection.x,playerRigidBody.velocity.y,moveDirection.z);
+        Vector3 movementVelocity=playerRigidBody.velocity;
+        movementVelocity.x=moveDirection.x*mag;
+        movementVelocity.z=moveDirection.z*mag;
         playerRigidBody.velocity=movementVelocity;
 
     }
