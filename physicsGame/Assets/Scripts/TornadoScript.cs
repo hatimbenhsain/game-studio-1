@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -36,8 +37,12 @@ public class TornadoScript : MonoBehaviour
     public float minGrowthRate=0.8f;
     public float maxGrowthRate=1.1f;
     
+    public float minGrowthRate2=0.8f;
 
     private bool jumped=false;
+
+    [Range(0f,1f)]
+    public float periodWeight=0.75f;
     
     private void Awake() {
         radius=transform.localScale.x/2;
@@ -74,12 +79,15 @@ public class TornadoScript : MonoBehaviour
                 float periodDifference=Mathf.Abs(period-avgPeriod);
                 float mod=period;
                 if(mod<idealPeriod){
-                    mod=Mathf.Pow(period/idealPeriod,1.25f)*idealPeriod;
+                    mod=Mathf.Pow(period/idealPeriod,2f)*idealPeriod;
                 }
                 if(periodDifference<periodTreshold1){
                     float k=jumpIncrement*mod;
                     tornadoGrowthRate+=k;
                     Debug.Log("tresh 1 "+k);
+                    if(tornadoGrowthRate<minGrowthRate2){
+                        tornadoGrowthRate=minGrowthRate2;
+                    }
                 }else if(periodDifference<periodTreshold2){
                     float k=mod*(jumpIncrement*(periodTreshold2-periodDifference)-
                 degrowthIncrement*(periodDifference-periodTreshold1))/(periodTreshold2-periodTreshold1);
@@ -89,7 +97,7 @@ public class TornadoScript : MonoBehaviour
                     tornadoGrowthRate-=degrowthIncrement;
                     Debug.Log("fail");
                 }
-                avgPeriod=(period+avgPeriod)/2;
+                avgPeriod=Mathf.Min(period,2f)*periodWeight+avgPeriod*(1-periodWeight);
             }
             period=0f;
         }

@@ -23,6 +23,8 @@ public class PlayerLocomotion : MonoBehaviour
     private bool isFlying=true;
     public float jumpHeight=5f;
 
+    public float sphereRad=0.1f;
+
     // Start is called before the first frame update 
 
     private void Awake(){
@@ -39,19 +41,21 @@ public class PlayerLocomotion : MonoBehaviour
     }
 
     private void HandleMovement(){
-        moveDirection=cameraObject.forward*inputManager.verticalInput;
-        moveDirection=moveDirection+cameraObject.right*inputManager.horizontalInput;
-        
-        float mag=Mathf.Clamp(moveDirection.magnitude,0f,1f);
+        if(!isGrounded){
+            moveDirection=cameraObject.forward*inputManager.verticalInput;
+            moveDirection=moveDirection+cameraObject.right*inputManager.horizontalInput;
+            
+            float mag=Mathf.Clamp(moveDirection.magnitude,0f,1f);
 
-        moveDirection.Normalize();
-        moveDirection.y=0;
-        moveDirection=moveDirection*movementSpeed;
+            moveDirection.Normalize();
+            moveDirection.y=0;
+            moveDirection=moveDirection*movementSpeed;
 
-        Vector3 movementVelocity=playerRigidBody.velocity;
-        movementVelocity.x=moveDirection.x*mag;
-        movementVelocity.z=moveDirection.z*mag;
-        playerRigidBody.velocity=movementVelocity;
+            Vector3 movementVelocity=playerRigidBody.velocity;
+            movementVelocity.x=moveDirection.x*mag;
+            movementVelocity.z=moveDirection.z*mag;
+            playerRigidBody.velocity=movementVelocity;
+        }
 
     }
 
@@ -76,12 +80,20 @@ public class PlayerLocomotion : MonoBehaviour
         RaycastHit hit;
         Vector3 rayCastOrigin=transform.position;
         rayCastOrigin.y=rayCastOrigin.y+rayCastHeightOffset;
-
-        if(Physics.SphereCast(rayCastOrigin,0.2f,-Vector3.up,out hit,groundLayer)){
+        
+        if(Physics.SphereCast(rayCastOrigin,sphereRad,-Vector3.up,out hit,rayCastHeightOffset*2,groundLayer)){
             isGrounded=true;
         }else{
             isGrounded=false;
         }
+    }
+
+    private void OnDrawGizmosSelected() {
+        // Vector3 rayCastOrigin=transform.position;
+        // rayCastOrigin.y=rayCastOrigin.y+rayCastHeightOffset;
+        // Gizmos.color=Color.red;
+        // Gizmos.DrawSphere(rayCastOrigin,sphereRad);
+        // Gizmos.DrawSphere(rayCastOrigin-rayCastHeightOffset*Vector3.up*2,sphereRad);
     }
 
     public void HandleJumping(){

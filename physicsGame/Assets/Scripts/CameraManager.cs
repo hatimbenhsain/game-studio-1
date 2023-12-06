@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraManager : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     public Transform targetTransform;
     public Transform cameraPivot;
-    private Vector3 cameraFollowVelocity=Vector3.zero;
+    private Vector3 cameraFollowVelocity;
+
+    private TornadoScript tornadoScript;
 
     public float cameraFollowSpeed=0.2f;
     public float cameraLookSpeed=2f;
@@ -20,10 +23,23 @@ public class CameraManager : MonoBehaviour
     public float minPivotAngle=-35f;
     public float maxPivotAngle=35f;
 
+    private Transform cameraTransform;
+    private float initialDistance;
+    public float minDistance=5f;
+
+    public float maxRadius=10f;
+
+    public float minDivider=2f;
+    public float maxDivider=6f;
+
     private void Awake() {
+        cameraFollowVelocity=Vector3.zero;
         inputManager=FindObjectOfType<InputManager>();
         targetTransform=FindObjectOfType<ButterflyScript>().transform;
         Debug.Log("logging");
+        tornadoScript=FindObjectOfType<TornadoScript>();
+        cameraTransform=cameraPivot.GetChild(0);
+        initialDistance=Mathf.Abs(cameraTransform.localPosition.z);
     }
 
     public void HandleAllCameraMovement(){
@@ -50,5 +66,18 @@ public class CameraManager : MonoBehaviour
         rotation.x=pivotAngle;
         targetRotation=Quaternion.Euler(rotation);
         cameraPivot.localRotation=targetRotation;
+    }
+
+    private void Update() {
+        Vector3 pos=cameraTransform.localPosition;
+        float rad=tornadoScript.currentRadius;
+        float val=minDivider;
+        if(rad>minDistance && rad<maxRadius){
+            val=minDivider+(maxDivider-minDivider)*(rad-minDistance)/(maxRadius-minDistance);
+        }else if(rad>=maxRadius){
+            val=maxDivider;
+        }
+        pos.z=-Mathf.Max(Mathf.Lerp(-pos.z,initialDistance*rad/val,1f),minDistance);
+        cameraTransform.localPosition=pos;
     }
 }
