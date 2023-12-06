@@ -84,7 +84,6 @@ public class TornadoScript : MonoBehaviour
                 if(periodDifference<periodTreshold1){
                     float k=jumpIncrement*mod;
                     tornadoGrowthRate+=k;
-                    Debug.Log("tresh 1 "+k);
                     if(tornadoGrowthRate<minGrowthRate2){
                         tornadoGrowthRate=minGrowthRate2;
                     }
@@ -92,10 +91,8 @@ public class TornadoScript : MonoBehaviour
                     float k=mod*(jumpIncrement*(periodTreshold2-periodDifference)-
                 degrowthIncrement*(periodDifference-periodTreshold1))/(periodTreshold2-periodTreshold1);
                     tornadoGrowthRate+=k;
-                    Debug.Log("tresh 2 "+k);
                 }else{
                     tornadoGrowthRate-=degrowthIncrement;
-                    Debug.Log("fail");
                 }
                 avgPeriod=Mathf.Min(period,2f)*periodWeight+avgPeriod*(1-periodWeight);
             }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -78,6 +79,6 @@ public class CameraManager : MonoBehaviour
             val=maxDivider;
         }
         pos.z=-Mathf.Max(Mathf.Lerp(-pos.z,initialDistance*rad/val,1f),minDistance);
-        cameraTransform.localPosition=pos;
+        cameraTransform.localPosition=Vector3.Lerp(cameraTransform.localPosition,pos,Time.deltaTime*4f);
     }
 }

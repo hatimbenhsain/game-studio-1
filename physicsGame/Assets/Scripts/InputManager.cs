@@ -18,6 +18,10 @@ public class InputManager : MonoBehaviour
     public float horizontalInput;
 
     public bool jumpInput;
+    public bool jumpCancel;
+    public bool diveInput;
+    public bool diveStart;
+    public bool diveCancel;
 
     private void Awake() {
         playerLocomotion=FindObjectOfType<PlayerLocomotion>();
@@ -29,6 +33,10 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed+=i => cameraInput=i.ReadValue<Vector2>();
         
             playerControls.PlayerActions.Jump.performed+=i => jumpInput=true;
+            playerControls.PlayerActions.Jump.canceled+=i => jumpCancel=true;
+            playerControls.PlayerActions.Dive.performed+=i => diveInput=true;
+            playerControls.PlayerActions.Dive.started+=i => diveStart=true;
+            playerControls.PlayerActions.Dive.canceled+=i => diveCancel=true;
         }
         playerControls.Enable();
     }
@@ -40,6 +48,7 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs(){
         HandleMovementInput();
         HandleJumpingInput();
+        HandleDiveInput();
     }
 
     private void HandleMovementInput(){
@@ -53,7 +62,28 @@ public class InputManager : MonoBehaviour
     private void HandleJumpingInput(){
         if(jumpInput){
             jumpInput=false;
-            playerLocomotion.HandleJumping();
+            playerLocomotion.HandleJumping(true);
+        }
+        if(jumpCancel){
+            jumpCancel=false;
+            playerLocomotion.HandleJumping(false);
+        }
+    }
+
+    private void HandleDiveInput(){
+        if(diveInput){
+            diveInput=false;
+            Debug.Log("dive input");
+        }
+        if(diveStart){
+            diveStart=false;
+            Debug.Log("dive start");
+            playerLocomotion.HandleDiving(true);
+        }
+        if(diveCancel){
+            diveCancel=false;
+            Debug.Log("dive end");
+            playerLocomotion.HandleDiving(false);
         }
     }
 }

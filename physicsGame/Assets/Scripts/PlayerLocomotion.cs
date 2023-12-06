@@ -21,9 +21,19 @@ public class PlayerLocomotion : MonoBehaviour
     public float rayCastHeightOffset=0.5f;
 
     private bool isFlying=true;
-    public float jumpHeight=5f;
+    public float initialJumpHeight=5f;
 
     public float sphereRad=0.1f;
+
+    public bool diving=false;
+    public bool jumping=false;
+    public bool prevJumping=false;
+    public float divingWeight=0.1f;
+    public float extraJumpHeight=5f;
+
+    public float maxJumpTime=0.5f;
+
+    public float jumpTimer=0f;
 
     // Start is called before the first frame update 
 
@@ -54,26 +64,41 @@ public class PlayerLocomotion : MonoBehaviour
             Vector3 movementVelocity=playerRigidBody.velocity;
             movementVelocity.x=moveDirection.x*mag;
             movementVelocity.z=moveDirection.z*mag;
+
+            if(jumping && prevJumping){
+                jumpTimer+=Time.fixedDeltaTime;
+                jumpTimer=Mathf.Min(jumpTimer,maxJumpTime);
+                movementVelocity.y=initialJumpHeight+extraJumpHeight*jumpTimer/maxJumpTime;
+                if(jumpTimer>=maxJumpTime){
+                    jumpTimer=0f;
+                    jumping=false;
+                }
+            }
+
             playerRigidBody.velocity=movementVelocity;
         }
+
+        prevJumping=jumping;
 
     }
 
     private void HandleRotation(){
-        Vector3 targetDirection=Vector3.zero;
-        targetDirection=cameraObject.forward*inputManager.verticalInput;
-        targetDirection=targetDirection+cameraObject.right*inputManager.horizontalInput;
-        targetDirection.Normalize();
-        targetDirection.y=0;
+        if(!isGrounded){
+            Vector3 targetDirection=Vector3.zero;
+            targetDirection=cameraObject.forward*inputManager.verticalInput;
+            targetDirection=targetDirection+cameraObject.right*inputManager.horizontalInput;
+            targetDirection.Normalize();
+            targetDirection.y=0;
 
-        if(targetDirection==Vector3.zero){
-            targetDirection=transform.forward;
+            if(targetDirection==Vector3.zero){
+                targetDirection=transform.forward;
+            }
+
+            Quaternion targetRotation=Quaternion.LookRotation(targetDirection);
+            Quaternion playerRotation=Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed*Time.deltaTime);
+
+            transform.rotation=playerRotation;
         }
-
-        Quaternion targetRotation=Quaternion.LookRotation(targetDirection);
-        Quaternion playerRotation=Quaternion.Slerp(transform.rotation,targetRotation,rotationSpeed*Time.deltaTime);
-
-        transform.rotation=playerRotation;
     }
 
     private void HandleFalling(){
@@ -83,8 +108,13 @@ public class PlayerLocomotion : MonoBehaviour
         
         if(Physics.SphereCast(rayCastOrigin,sphereRad,-Vector3.up,out hit,rayCastHeightOffset*2,groundLayer)){
             isGrounded=true;
+            diving=false;
         }else{
             isGrounded=false;
+        }
+
+        if(diving){
+            playerRigidBody.AddForce(divingWeight*Vector3.down,ForceMode.Impulse);
         }
     }
 
@@ -96,12 +126,24 @@ public class PlayerLocomotion : MonoBehaviour
         // Gizmos.DrawSphere(rayCastOrigin-rayCastHeightOffset*Vector3.up*2,sphereRad);
     }
 
-    public void HandleJumping(){
-         if(isGrounded || isFlying){
+    public void HandleJumping(bool b){
+         if(b && (isGrounded || isFlying)){
             Vector3 playerVelocity=playerRigidBody.velocity;
-            playerVelocity.y=jumpHeight;
+            playerVelocity.y=initialJumpHeight;
             playerRigidBody.velocity=playerVelocity;
             butterflyScript.Jump();
+            jumping=true;
+            jumpTimer=0f;
+         }
+         if(!b){
+            jumping=false;
          }
     }
+
+    public void HandleDiving(bool b){
+        if(!isGrounded){
+            diving=b;
+        }
+    }
+
 }
