@@ -26,7 +26,7 @@ public class TornadoScript : MonoBehaviour
     public float currentRadius=1f;
 
     
-    private float period;
+    public float period;
     [Header("Behavior Type 2")]
     public float avgPeriod=0.9f;
     public float idealPeriod=0.9f;
