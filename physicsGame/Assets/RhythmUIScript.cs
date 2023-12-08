@@ -50,8 +50,16 @@ public class RhythmUIScript : MonoBehaviour
             prevRects=new RectTransform[] {timezoneRect,sweetspotRect};
             timezoneRect=Instantiate(timezoneRect,timezoneRect.transform.parent);
             timezoneRect.transform.SetSiblingIndex(1);
+            Image i=timezoneRect.gameObject.GetComponent<Image>();
+            Color c=i.color;
+            c.a=Mathf.Min(ap/tornadoScript.idealPeriod,1f);
+            i.color=c;
             sweetspotRect=Instantiate(sweetspotRect,timezoneRect.transform.parent);
             sweetspotRect.transform.SetSiblingIndex(2);
+            i=sweetspotRect.gameObject.GetComponent<Image>();
+            c=i.color;
+            c.a=Mathf.Min(ap/tornadoScript.idealPeriod,1f);
+            i.color=c;
         }
 
         foreach(Image i in prevImages){
