@@ -15,6 +15,9 @@ public class TornadoScript : MonoBehaviour
     public float radius=1f;
     public int behaviorType=1;
 
+    public float cyclePeriod=2f;
+    public float ringNumber=5f;
+
     [Header("Behavior Type 1")]
     public float tornadoGrowthRate=0f;
     public float tornadoDegrowthRate=1f;
@@ -27,6 +30,9 @@ public class TornadoScript : MonoBehaviour
 
     
     public float period;
+
+    
+
     [Header("Behavior Type 2")]
     public float avgPeriod=0.9f;
     public float idealPeriod=0.9f;
