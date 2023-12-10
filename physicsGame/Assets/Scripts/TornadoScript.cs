@@ -53,6 +53,8 @@ public class TornadoScript : MonoBehaviour
 
     [Range(0f,1f)]
     public float periodWeight=0.75f;
+
+    private float jumpY;
     
     private void Awake() {
         radius=transform.localScale.x/2;
@@ -61,14 +63,17 @@ public class TornadoScript : MonoBehaviour
         butterflyScript=FindObjectOfType<ButterflyScript>();
     }
 
-    public void Jumped(){
+    public void Jumped(float y){
         jumped=true;
+        jumpY=y;
     }
 
     private void Update() {
         period+=Time.deltaTime;
 
         tornadoGrowthRate-=tornadoDegrowthRate*Time.deltaTime;
+
+        currentRadius=transform.localScale.x;
 
         if(jumped){
             jumped=false;
@@ -94,11 +99,16 @@ public class TornadoScript : MonoBehaviour
                     tornadoGrowthRate-=degrowthIncrement;
                 }
                 avgPeriod=Mathf.Min(period,2f)*periodWeight+avgPeriod*(1-periodWeight);
+                tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
             }
             period=0f;
+            if(jumpY<-5){
+                Debug.Log(jumpY);
+                tornadoGrowthRate+=maxGrowthRate*Mathf.Min(1f,(Mathf.Abs(jumpY)-5)/35);
+            }
         }
 
-        currentRadius=transform.localScale.x;
+        
         
         
         if(behaviorType==1){
@@ -107,7 +117,11 @@ public class TornadoScript : MonoBehaviour
             tornadoGrowthRate-=10f*Time.deltaTime;
             tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,-10f,10f);
         }else if(behaviorType==2){
-            tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+            //tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+            tornadoGrowthRate=Mathf.Max(tornadoGrowthRate,minGrowthRate);
+            if(tornadoGrowthRate>maxGrowthRate){
+                tornadoGrowthRate=Mathf.Lerp(tornadoGrowthRate,maxGrowthRate,5*Time.deltaTime);
+            }
             currentRadius=currentRadius*(1+Time.deltaTime*(tornadoGrowthRate-1));
             currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
         }
@@ -119,7 +133,7 @@ public class TornadoScript : MonoBehaviour
 
     private void FixedUpdate(){
         Vector3 v=butterflyScript.transform.position-transform.position;
-        body.velocity=new Vector3(v.x*10f,3f*v.y,v.z*10f);
+        body.velocity=new Vector3(v.x*10f,10f*v.y,v.z*10f);
     }
 
 }

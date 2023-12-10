@@ -129,9 +129,10 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleJumping(bool b){
          if(b && (isGrounded || isFlying)){
             Vector3 playerVelocity=playerRigidBody.velocity;
+            float yValue=playerVelocity.y;
             playerVelocity.y=initialJumpHeight;
             playerRigidBody.velocity=playerVelocity;
-            butterflyScript.Jump();
+            butterflyScript.Jump(yValue);
             jumping=true;
             jumpTimer=0f;
          }
