@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class TornadoScript : MonoBehaviour
 {
     public Transform tornadoCenter;
+    private ButterflyScript butterflyScript;
+
+    private Rigidbody body;
     public float pullForce;
     public float refreshRate;
     public float pullResetSpeed=0.5f;
@@ -53,19 +57,8 @@ public class TornadoScript : MonoBehaviour
     private void Awake() {
         radius=transform.localScale.x/2;
         period=0f;
-    }
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag=="Object"){
-            ObjectScript os=other.GetComponent<ObjectScript>();
-            os.EnterTornado(this,pullForce);
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if(other.tag=="Object"){
-            ObjectScript os=other.GetComponent<ObjectScript>();
-            os.ExitTornado();
-        }
+        body=GetComponent<Rigidbody>();
+        butterflyScript=FindObjectOfType<ButterflyScript>();
     }
 
     public void Jumped(){
@@ -122,6 +115,11 @@ public class TornadoScript : MonoBehaviour
         transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
         
         
+    }
+
+    private void FixedUpdate(){
+        Vector3 v=butterflyScript.transform.position-transform.position;
+        body.velocity=new Vector3(v.x*10f,3f*v.y,v.z*10f);
     }
 
 }

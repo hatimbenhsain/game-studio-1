@@ -20,6 +20,8 @@ public class ObjectScript : MonoBehaviour
     private float tornadoPeriod;
     private float ringNumber;
 
+
+
     private void Awake() {
         body=GetComponent<Rigidbody>();
     }
@@ -49,7 +51,7 @@ public class ObjectScript : MonoBehaviour
 
             float modifier=1f;
             float d=Vector3.Distance(tornadoCenter.position,transform.position);
-            float r=tornadoScript.currentRadius;
+            float r=tornadoScript.currentRadius*1.5f;
             if(d>r){
                 modifier=Mathf.Clamp(1-(d-r)/(2*r),0f,1f);
             }

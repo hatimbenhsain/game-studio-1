@@ -113,16 +113,13 @@ public class InputManager : MonoBehaviour
     private void HandleDiveInput(){
         if(diveInput){
             diveInput=false;
-            Debug.Log("dive input");
         }
         if(diveStart){
             diveStart=false;
-            Debug.Log("dive start");
             playerLocomotion.HandleDiving(true);
         }
         if(diveCancel){
             diveCancel=false;
-            Debug.Log("dive end");
             playerLocomotion.HandleDiving(false);
         }
     }
