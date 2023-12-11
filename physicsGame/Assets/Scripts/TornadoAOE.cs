@@ -14,7 +14,7 @@ public class TornadoAOE : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag=="Object"){
-            ObjectScript os=other.GetComponent<ObjectScript>();
+            ObjectScript os=other.GetComponentInParent<ObjectScript>();
             os.EnterTornado(tornadoScript,tornadoScript.pullForce);
             Debug.Log("enter object");
         }
@@ -22,7 +22,7 @@ public class TornadoAOE : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if(other.tag=="Object"){
-            ObjectScript os=other.GetComponent<ObjectScript>();
+            ObjectScript os=other.GetComponentInParent<ObjectScript>();
             os.ExitTornado();
         }
     }

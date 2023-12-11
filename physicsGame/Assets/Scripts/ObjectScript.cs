@@ -79,8 +79,8 @@ public class ObjectScript : MonoBehaviour
                 }
             }else{
                 restTimer+=Time.fixedDeltaTime;
-                //Vector3 forceDir=tornadoCenter.position-transform.position;
-                //body.AddForce(forceDir.normalized*pullForce*Time.fixedDeltaTime*modifier*pullIntensity,ForceMode.Impulse);
+                Vector3 forceDir=tornadoCenter.position-transform.position;
+                body.AddForce(forceDir.normalized*pullForce*Time.fixedDeltaTime*modifier*pullIntensity,ForceMode.Impulse);
                 if(restTimer>=restPeriod){
                     restTimer=-1f;
                     timer=0f;
