@@ -16,7 +16,6 @@ public class TornadoAOE : MonoBehaviour
         if(other.tag=="Object"){
             ObjectScript os=other.GetComponentInParent<ObjectScript>();
             os.EnterTornado(tornadoScript,tornadoScript.pullForce);
-            Debug.Log("enter object");
         }
     }
 

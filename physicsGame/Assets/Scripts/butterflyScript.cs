@@ -44,7 +44,6 @@ public class ButterflyScript : MonoBehaviour
         if(tornadoScript.avgPeriod<tornadoScript.idealPeriod/2){
             v=Mathf.Pow(v*2*(tornadoScript.idealPeriod/2-tornadoScript.avgPeriod)/tornadoScript.idealPeriod,2f);
         }
-        Debug.Log(v);
         Color tColor=Color.Lerp(dullColor,baseColor,v);
         wingMaterial.color=Color.Lerp(wingMaterial.color,tColor,Time.deltaTime*10f);
     }

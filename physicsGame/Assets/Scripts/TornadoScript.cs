@@ -103,7 +103,6 @@ public class TornadoScript : MonoBehaviour
             }
             period=0f;
             if(jumpY<-5){
-                Debug.Log(jumpY);
                 tornadoGrowthRate+=maxGrowthRate*Mathf.Min(1f,(Mathf.Abs(jumpY)-5)/35);
             }
         }

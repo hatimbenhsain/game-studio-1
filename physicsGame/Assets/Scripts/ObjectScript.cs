@@ -21,12 +21,15 @@ public class ObjectScript : MonoBehaviour
     private float ringNumber;
 
     private float restTimer=-1f;
-    private float restPeriod=1f;
+    private float restPeriod=0.5f;
+
+    private float scaleToMassRatio=4f;
 
 
 
     private void Awake() {
         body=GetComponent<Rigidbody>();
+        body.mass=2*body.mass*(transform.localScale.x+transform.localScale.y+transform.localScale.z)/3;
     }
 
     public void EnterTornado(TornadoScript ts, float f){
@@ -55,8 +58,14 @@ public class ObjectScript : MonoBehaviour
             float modifier=1f;
             float d=Vector3.Distance(tornadoCenter.position,transform.position);
             float r=tornadoScript.currentRadius*1.5f;
-            if(d>r){
+            float tm=tornadoScript.currentRadius*scaleToMassRatio;
+            if(!inTornado){
                 modifier=Mathf.Clamp(1-(d-r)/(2*r),0f,1f);
+            }
+            if(body.mass>tm){
+                modifier=modifier*Mathf.Pow(tm/body.mass,2f);
+                //modifier=0f;
+                if(gameObject.name=="apple")  Debug.Log("apple drag");
             }
             if(restTimer==-1f){
                 timer+=Time.fixedDeltaTime;
@@ -72,18 +81,24 @@ public class ObjectScript : MonoBehaviour
                 float tz=r*Mathf.Sin(k)*ringSize;
                 
                 Vector3 targetPosition=tornadoCenter.position+new Vector3(tx,ty,tz);
-                body.velocity=Vector3.Lerp(body.velocity,modifier*(targetPosition-transform.position),0.5f);
+                body.velocity=Vector3.Lerp(body.velocity,targetPosition-transform.position,modifier*0.5f);
             
                 if(timer==tornadoPeriod){
                     restTimer=0f;
                 }
+                if(modifier==1f && gameObject.name=="apple"){
+                     Debug.Log("apple nromal");
+                    Debug.Log(targetPosition);
+                }
             }else{
+                if(gameObject.name=="apple") Debug.Log("apple rest");
                 restTimer+=Time.fixedDeltaTime;
                 Vector3 forceDir=tornadoCenter.position-transform.position;
                 body.AddForce(forceDir.normalized*pullForce*Time.fixedDeltaTime*modifier*pullIntensity,ForceMode.Impulse);
                 if(restTimer>=restPeriod){
                     restTimer=-1f;
                     timer=0f;
+                    timeOffset=Random.Range(0f,tornadoPeriod);
                 }
             }            
         }
@@ -91,5 +106,14 @@ public class ObjectScript : MonoBehaviour
             pullResetTimer-=Time.fixedDeltaTime*tornadoScript.pullResetSpeed;
         }
         pullResetTimer=Mathf.Clamp(pullResetTimer,0f,1f);
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag=="Floor" && restTimer>0f){
+            restTimer=-1f;
+            timer=0f;
+            timeOffset=Random.Range(0f,tornadoPeriod);
+            Debug.Log("reset");
+        }
     }
 }
