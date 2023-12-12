@@ -25,11 +25,17 @@ public class ObjectScript : MonoBehaviour
 
     private float scaleToMassRatio=4f;
 
+    private bool hasBeenMoved=false;
+    private Vector3 startPosition;
 
+    private float distanceMoved;
+    public float score;
 
     private void Awake() {
         body=GetComponent<Rigidbody>();
         body.mass=2*body.mass*(transform.localScale.x+transform.localScale.y+transform.localScale.z)/3;
+        distanceMoved=0f;
+        score=0f;
     }
 
     public void EnterTornado(TornadoScript ts, float f){
@@ -43,6 +49,10 @@ public class ObjectScript : MonoBehaviour
         timeOffset=Random.Range(0f,tornadoPeriod);
         ringNumber=ts.ringNumber;
         restTimer=-1f;
+        if(!hasBeenMoved){
+            startPosition=transform.position;
+        }
+        hasBeenMoved=true;
     }
 
     public void ExitTornado(){
@@ -106,6 +116,11 @@ public class ObjectScript : MonoBehaviour
             pullResetTimer-=Time.fixedDeltaTime*tornadoScript.pullResetSpeed;
         }
         pullResetTimer=Mathf.Clamp(pullResetTimer,0f,1f);
+
+        if(hasBeenMoved){
+            distanceMoved=Mathf.Max(distanceMoved,Vector3.Distance(transform.position,startPosition));
+            score=distanceMoved*body.mass;
+        }
     }
 
     private void OnCollisionEnter(Collision other) {

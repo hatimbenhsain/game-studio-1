@@ -54,7 +54,10 @@ public class CameraManager : MonoBehaviour
     }
 
     private void RotateCamera(){
-        Vector2 cInput=inputManager.cameraInput+inputManager.cameraInput2;
+        Vector2 cInput=inputManager.cameraMouseInput;
+        if(cInput==Vector2.zero){
+            cInput=(inputManager.cameraInput+inputManager.cameraInput2)*(60f/(1f/Time.deltaTime));
+        }
         lookAngle=lookAngle+(cInput.x*cameraLookSpeed);
         pivotAngle=pivotAngle-(cInput.y*cameraPivotSpeed);
         pivotAngle=Mathf.Clamp(pivotAngle,minPivotAngle,maxPivotAngle);

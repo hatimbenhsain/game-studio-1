@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     PlayerLocomotion playerLocomotion;
     public Vector2 movementInput;
     public Vector2 cameraInput;
+    public Vector2 cameraMouseInput;
     public bool cameraLeftStart;
     public bool cameraLeftCancel;
     public bool cameraLeftInput;
@@ -39,7 +40,8 @@ public class InputManager : MonoBehaviour
             playerControls=new PlayerControls();
             playerControls.PlayerMovement.Movement.performed+=i => movementInput=i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed+=i => cameraInput=i.ReadValue<Vector2>();
-            
+            playerControls.PlayerMovement.CameraMouse.performed+=i => cameraMouseInput=i.ReadValue<Vector2>();
+
             playerControls.PlayerMovement.CameraLeft.started+=i => cameraLeftStart=true;
             playerControls.PlayerMovement.CameraRight.started+=i => cameraRightStart=true;
             playerControls.PlayerMovement.CameraLeft.canceled+=i => cameraLeftCancel=true;

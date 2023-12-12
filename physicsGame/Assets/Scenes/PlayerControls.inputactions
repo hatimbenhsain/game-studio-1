@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CameraMouse",
+                    "type": "PassThrough",
+                    "id": "1a9feccf-86ee-4761-a9e5-aeed3fc7d90f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -154,17 +163,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "c1620da4-0959-4707-9414-065c0c52761e",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "Right Stick",
                     "id": "95d88c1e-5851-4ef4-ab12-466a337d9660",
                     "path": "2DVector(mode=2)",
@@ -238,6 +236,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CameraRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6bbecf2-ccdb-4de8-91d2-d1124aa449a3",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
