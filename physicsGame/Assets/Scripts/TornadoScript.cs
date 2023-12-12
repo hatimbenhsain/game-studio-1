@@ -56,11 +56,14 @@ public class TornadoScript : MonoBehaviour
 
     private float jumpY;
     
+    private ParticleSystem particleSystem;
+
     private void Awake() {
         radius=transform.localScale.x/2;
         period=0f;
         body=GetComponent<Rigidbody>();
         butterflyScript=FindObjectOfType<ButterflyScript>();
+        particleSystem=FindObjectOfType<ParticleSystem>();
     }
 
     public void Jumped(float y){
@@ -127,7 +130,25 @@ public class TornadoScript : MonoBehaviour
 
         transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
         
-        
+        var main=particleSystem.main;
+        var emissionModule=particleSystem.emission;
+        Color c=main.startColor.color;
+
+        if(currentRadius==minRadius){
+            c.a=Mathf.Lerp(c.a,0f,Time.deltaTime*5f);
+            main.startColor=c;
+            main.startLifetime=Mathf.Lerp(main.startLifetime.constant,0f,Time.deltaTime*5f);
+            ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
+            curve.constantMax=Mathf.Lerp(curve.constantMax,0f,Time.deltaTime*5f);
+            emissionModule.rateOverTime=curve;
+        }else{
+            c.a=Mathf.Lerp(c.a,1,Time.deltaTime*5f);
+            main.startColor=c;
+            main.startLifetime=Mathf.Lerp(main.startLifetime.constant,2f,Time.deltaTime*5f);
+            ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
+            curve.constantMax=Mathf.Lerp(curve.constantMax,3f,Time.deltaTime*5f);
+            emissionModule.rateOverTime=curve;
+        }
     }
 
     private void FixedUpdate(){
