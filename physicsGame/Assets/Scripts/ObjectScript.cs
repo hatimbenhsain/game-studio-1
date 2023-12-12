@@ -119,7 +119,7 @@ public class ObjectScript : MonoBehaviour
 
         if(hasBeenMoved){
             distanceMoved=Mathf.Max(distanceMoved,Vector3.Distance(transform.position,startPosition));
-            score=distanceMoved*body.mass;
+            score=distanceMoved*Mathf.Pow(body.mass/2f,0.75f);
         }
     }
 
