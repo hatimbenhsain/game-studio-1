@@ -31,11 +31,17 @@ public class ObjectScript : MonoBehaviour
     private float distanceMoved;
     public float score;
 
+    private Collider[] colliders;
+    public Collider myCollider;
+
     private void Awake() {
         body=GetComponent<Rigidbody>();
         body.mass=2*body.mass*(transform.localScale.x+transform.localScale.y+transform.localScale.z)/3;
         distanceMoved=0f;
         score=0f;
+        colliders=GetComponentsInChildren<Collider>();
+        myCollider=FindGameObjectInChildWithTag(gameObject,"myCollider").GetComponent<Collider>();
+        if(myCollider!=null) myCollider.enabled=false;
     }
 
     public void EnterTornado(TornadoScript ts, float f){
@@ -53,12 +59,22 @@ public class ObjectScript : MonoBehaviour
             startPosition=transform.position;
         }
         hasBeenMoved=true;
+        if(myCollider!=null){
+            foreach(Collider c in colliders){
+                c.enabled=false;
+            }
+            myCollider.enabled=true;
+        }
     }
 
     public void ExitTornado(){
         inTornado=false;
         restTimer=-1f;
         timer=0f;
+        // foreach(Collider c in colliders){
+        //     c.enabled=true;
+        // }
+        // myCollider.enabled=false;
     }
 
     // Update is called once per frame
@@ -111,6 +127,9 @@ public class ObjectScript : MonoBehaviour
                     timeOffset=Random.Range(0f,tornadoPeriod);
                 }
             }            
+            if(tornadoScript.currentRadius<=1f){
+                ExitTornado();
+            }
         }
         if(!inTornado && pullResetTimer>0f){
             pullResetTimer-=Time.fixedDeltaTime*tornadoScript.pullResetSpeed;
@@ -122,6 +141,23 @@ public class ObjectScript : MonoBehaviour
             score=distanceMoved*Mathf.Pow(body.mass/2f,0.75f);
         }
     }
+
+    //following function from Roixo https://discussions.unity.com/t/how-to-find-child-with-tag/129880/3
+    public static GameObject FindGameObjectInChildWithTag (GameObject parent, string tag)
+	{
+		Transform t = parent.transform;
+
+		for (int i = 0; i < t.childCount; i++) 
+		{
+			if(t.GetChild(i).gameObject.tag == tag)
+			{
+				return t.GetChild(i).gameObject;
+			}
+				
+		}
+			
+		return null;
+	}
 
     // private void OnCollisionEnter(Collision other) {
     //     if(other.gameObject.tag=="Floor" && restTimer>0f){
