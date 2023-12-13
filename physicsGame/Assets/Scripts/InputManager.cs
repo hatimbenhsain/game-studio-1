@@ -32,8 +32,13 @@ public class InputManager : MonoBehaviour
     public bool diveStart;
     public bool diveCancel;
 
+    public bool pauseInput;
+
+    private GameManager gameManager;
+
     private void Awake() {
         playerLocomotion=FindObjectOfType<PlayerLocomotion>();
+        gameManager=FindObjectOfType<GameManager>();
     }
     private void OnEnable() {
         if(playerControls==null){
@@ -53,6 +58,9 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Dive.performed+=i => diveInput=true;
             playerControls.PlayerActions.Dive.started+=i => diveStart=true;
             playerControls.PlayerActions.Dive.canceled+=i => diveCancel=true;
+
+            playerControls.PlayerActions.Pause.performed+=i => pauseInput=true;
+
         }
         playerControls.Enable();
     }
@@ -65,6 +73,7 @@ public class InputManager : MonoBehaviour
         HandleMovementInput();
         HandleJumpingInput();
         HandleDiveInput();
+        HandlePauseInput();
     }
 
     private void HandleMovementInput(){
@@ -109,6 +118,13 @@ public class InputManager : MonoBehaviour
         if(jumpCancel){
             jumpCancel=false;
             playerLocomotion.HandleJumping(false);
+        }
+    }
+
+    public void HandlePauseInput(){
+        if(pauseInput){
+            pauseInput=false;
+            gameManager.Pause();
         }
     }
 

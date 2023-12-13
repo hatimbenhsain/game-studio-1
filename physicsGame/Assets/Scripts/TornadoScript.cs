@@ -57,6 +57,7 @@ public class TornadoScript : MonoBehaviour
     private float jumpY;
     
     private ParticleSystem particleSystem;
+    private GameManager gameManager;
 
     private void Awake() {
         radius=transform.localScale.x/2;
@@ -64,6 +65,8 @@ public class TornadoScript : MonoBehaviour
         body=GetComponent<Rigidbody>();
         butterflyScript=FindObjectOfType<ButterflyScript>();
         particleSystem=FindObjectOfType<ParticleSystem>();
+        gameManager=FindObjectOfType<GameManager>();
+
     }
 
     public void Jumped(float y){
@@ -72,82 +75,84 @@ public class TornadoScript : MonoBehaviour
     }
 
     private void Update() {
-        period+=Time.deltaTime;
+        if(!gameManager.paused){
+            period+=Time.deltaTime;
 
-        tornadoGrowthRate-=tornadoDegrowthRate*Time.deltaTime;
+            tornadoGrowthRate-=tornadoDegrowthRate*Time.deltaTime;
 
-        currentRadius=transform.localScale.x;
+            currentRadius=transform.localScale.x;
 
-        if(jumped){
-            jumped=false;
-            if(behaviorType==1){
-                tornadoGrowthRate+=10f;
-            }else if(behaviorType==2){
-                float periodDifference=Mathf.Abs(period-avgPeriod);
-                float mod=period;
-                if(mod<idealPeriod){
-                    mod=Mathf.Pow(period/idealPeriod,2f)*idealPeriod;
-                }
-                if(periodDifference<periodTreshold1){
-                    float k=jumpIncrement*mod;
-                    tornadoGrowthRate+=k;
-                    if(tornadoGrowthRate<minGrowthRate2){
-                        tornadoGrowthRate=minGrowthRate2;
+            if(jumped){
+                jumped=false;
+                if(behaviorType==1){
+                    tornadoGrowthRate+=10f;
+                }else if(behaviorType==2){
+                    float periodDifference=Mathf.Abs(period-avgPeriod);
+                    float mod=period;
+                    if(mod<idealPeriod){
+                        mod=Mathf.Pow(period/idealPeriod,2f)*idealPeriod;
                     }
-                }else if(periodDifference<periodTreshold2){
-                    float k=mod*(jumpIncrement*(periodTreshold2-periodDifference)-
-                degrowthIncrement*(periodDifference-periodTreshold1))/(periodTreshold2-periodTreshold1);
-                    tornadoGrowthRate+=k;
-                }else{
-                    tornadoGrowthRate-=degrowthIncrement;
+                    if(periodDifference<periodTreshold1){
+                        float k=jumpIncrement*mod;
+                        tornadoGrowthRate+=k;
+                        if(tornadoGrowthRate<minGrowthRate2){
+                            tornadoGrowthRate=minGrowthRate2;
+                        }
+                    }else if(periodDifference<periodTreshold2){
+                        float k=mod*(jumpIncrement*(periodTreshold2-periodDifference)-
+                    degrowthIncrement*(periodDifference-periodTreshold1))/(periodTreshold2-periodTreshold1);
+                        tornadoGrowthRate+=k;
+                    }else{
+                        tornadoGrowthRate-=degrowthIncrement;
+                    }
+                    avgPeriod=Mathf.Min(period,2f)*periodWeight+avgPeriod*(1-periodWeight);
+                    tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
                 }
-                avgPeriod=Mathf.Min(period,2f)*periodWeight+avgPeriod*(1-periodWeight);
-                tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+                period=0f;
+                if(jumpY<-5){
+                    tornadoGrowthRate+=maxGrowthRate*Mathf.Min(1f,(Mathf.Abs(jumpY)-5)/35);
+                }
             }
-            period=0f;
-            if(jumpY<-5){
-                tornadoGrowthRate+=maxGrowthRate*Mathf.Min(1f,(Mathf.Abs(jumpY)-5)/35);
+
+            
+            
+            
+            if(behaviorType==1){
+                currentRadius=currentRadius+tornadoGrowthRate*Time.deltaTime;
+                currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
+                tornadoGrowthRate-=10f*Time.deltaTime;
+                tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,-10f,10f);
+            }else if(behaviorType==2){
+                //tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
+                tornadoGrowthRate=Mathf.Max(tornadoGrowthRate,minGrowthRate);
+                if(tornadoGrowthRate>maxGrowthRate){
+                    tornadoGrowthRate=Mathf.Lerp(tornadoGrowthRate,maxGrowthRate,5*Time.deltaTime);
+                }
+                currentRadius=currentRadius*(1+Time.deltaTime*(tornadoGrowthRate-1));
+                currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
             }
-        }
 
-        
-        
-        
-        if(behaviorType==1){
-            currentRadius=currentRadius+tornadoGrowthRate*Time.deltaTime;
-            currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
-            tornadoGrowthRate-=10f*Time.deltaTime;
-            tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,-10f,10f);
-        }else if(behaviorType==2){
-            //tornadoGrowthRate=Mathf.Clamp(tornadoGrowthRate,minGrowthRate,maxGrowthRate);
-            tornadoGrowthRate=Mathf.Max(tornadoGrowthRate,minGrowthRate);
-            if(tornadoGrowthRate>maxGrowthRate){
-                tornadoGrowthRate=Mathf.Lerp(tornadoGrowthRate,maxGrowthRate,5*Time.deltaTime);
+            transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
+            
+            var main=particleSystem.main;
+            var emissionModule=particleSystem.emission;
+            Color c=main.startColor.color;
+
+            if(currentRadius==minRadius){
+                c.a=Mathf.Lerp(c.a,0f,Time.deltaTime*5f);
+                main.startColor=c;
+                main.startLifetime=Mathf.Lerp(main.startLifetime.constant,0f,Time.deltaTime*5f);
+                ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
+                curve.constantMax=Mathf.Lerp(curve.constantMax,0f,Time.deltaTime*5f);
+                emissionModule.rateOverTime=curve;
+            }else{
+                c.a=Mathf.Lerp(c.a,1,Time.deltaTime*5f);
+                main.startColor=c;
+                main.startLifetime=Mathf.Lerp(main.startLifetime.constant,2f,Time.deltaTime*5f);
+                ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
+                curve.constantMax=Mathf.Lerp(curve.constantMax,3f,Time.deltaTime*5f);
+                emissionModule.rateOverTime=curve;
             }
-            currentRadius=currentRadius*(1+Time.deltaTime*(tornadoGrowthRate-1));
-            currentRadius=Mathf.Clamp(currentRadius,minRadius,maxRadius);
-        }
-
-        transform.localScale=new Vector3(currentRadius,currentRadius,currentRadius);
-        
-        var main=particleSystem.main;
-        var emissionModule=particleSystem.emission;
-        Color c=main.startColor.color;
-
-        if(currentRadius==minRadius){
-            c.a=Mathf.Lerp(c.a,0f,Time.deltaTime*5f);
-            main.startColor=c;
-            main.startLifetime=Mathf.Lerp(main.startLifetime.constant,0f,Time.deltaTime*5f);
-            ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
-            curve.constantMax=Mathf.Lerp(curve.constantMax,0f,Time.deltaTime*5f);
-            emissionModule.rateOverTime=curve;
-        }else{
-            c.a=Mathf.Lerp(c.a,1,Time.deltaTime*5f);
-            main.startColor=c;
-            main.startLifetime=Mathf.Lerp(main.startLifetime.constant,2f,Time.deltaTime*5f);
-            ParticleSystem.MinMaxCurve curve=emissionModule.rateOverTime;
-            curve.constantMax=Mathf.Lerp(curve.constantMax,3f,Time.deltaTime*5f);
-            emissionModule.rateOverTime=curve;
         }
     }
 
