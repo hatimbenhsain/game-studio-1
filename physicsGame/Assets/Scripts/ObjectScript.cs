@@ -123,12 +123,12 @@ public class ObjectScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag=="Floor" && restTimer>0f){
-            restTimer=-1f;
-            timer=0f;
-            timeOffset=Random.Range(0f,tornadoPeriod);
-            Debug.Log("reset");
-        }
-    }
+    // private void OnCollisionEnter(Collision other) {
+    //     if(other.gameObject.tag=="Floor" && restTimer>0f){
+    //         restTimer=-1f;
+    //         timer=0f;
+    //         timeOffset=Random.Range(0f,tornadoPeriod);
+    //         Debug.Log("reset");
+    //     }
+    // }
 }
