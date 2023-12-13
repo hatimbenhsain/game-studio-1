@@ -18,6 +18,8 @@ public class ButterflyScript : MonoBehaviour
 
     Animator animator;
 
+    public AudioSource wingFlapSound;
+
     void Awake()
     {
         inputManager=GetComponent<InputManager>();
@@ -49,6 +51,7 @@ public class ButterflyScript : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        playerLocomotion.speedModifier=Mathf.Pow(tornadoScript.currentRadius,0.4f);
         playerLocomotion.HandleAllMovement();
     }
 
@@ -59,5 +62,6 @@ public class ButterflyScript : MonoBehaviour
     public void Jump(float y){
         tornadoScript.Jumped(y);
         animator.SetTrigger("jump");
+        wingFlapSound.Play();
     }
 }

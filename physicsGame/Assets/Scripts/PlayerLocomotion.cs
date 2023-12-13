@@ -35,6 +35,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     public float jumpTimer=0f;
 
+    public float speedModifier=1f;
+
     // Start is called before the first frame update 
 
     private void Awake(){
@@ -59,7 +61,7 @@ public class PlayerLocomotion : MonoBehaviour
 
             moveDirection.Normalize();
             moveDirection.y=0;
-            moveDirection=moveDirection*movementSpeed;
+            moveDirection=moveDirection*movementSpeed*speedModifier;
 
             Vector3 movementVelocity=playerRigidBody.velocity;
             movementVelocity.x=moveDirection.x*mag;
